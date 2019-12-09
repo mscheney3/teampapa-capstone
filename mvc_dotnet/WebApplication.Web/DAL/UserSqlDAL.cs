@@ -129,6 +129,33 @@ namespace WebApplication.Web.DAL
             }
         }
 
+
+        public List<User> GetAllUsers()
+        {
+            try
+            {
+                List<User> users = new List<User>();
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM users;", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        User user = MapRowToUser(reader);
+                        users.Add(user);
+                    }
+                    return users;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
         private User MapRowToUser(SqlDataReader reader)
         {
             return new User()
