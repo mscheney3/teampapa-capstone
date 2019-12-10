@@ -35,3 +35,23 @@ body {
         display: none;
     }
 }
+
+.answer {
+    background-color: green;
+    color: white;
+    padding: 14px 25px;
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+    display: inline-block
+}
+
+    .answer:hover {
+        background-color: red;
+        text-decoration: none !important;
+        color: white;
+    }
+
+.scenario-image {
+    height: 350px;
+    width: 500px;
+}
