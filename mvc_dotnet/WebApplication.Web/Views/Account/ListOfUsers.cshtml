@@ -2,12 +2,14 @@
 @model List<User>
 @{
     ViewData["Title"] = "ListOfUsers";
+    User user = TempData["User"] as User;
 }
 
 
 <h2>List of Users</h2>
 
 <h4>List of Users:</h4>
+
 
 @foreach (User users in Model)
 {
@@ -18,4 +20,34 @@
     </tr><br/>
 
 }
+
+<h6> Would you like to reset a user's password?</h6>
+
+<form asp-controller="account" asp-action="ResetUser" method="post">
+    <div class="form-group">
+        <label asp-for="@user.Id"></label>
+        <input type="number" asp-for="@user.Id" />
+        <span asp-validation-for="@user.Id"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@user.Password"></label>
+        <input type="password" asp-for="@user.Password" />
+        <span asp-validation-for="@user.Password"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@user.Role"></label>
+        <input type="text" asp-for="@user.Role" />
+        <span asp-validation-for="@user.Role"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="hidden" asp-for="@user.Salt" />
+        <span asp-validation-for="@user.Salt"></span>
+    </div>
+
+
+    <input type="submit" value="Reset User" class="btn btn-default" />
+</form>
 

@@ -157,10 +157,11 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
+
 
             return answers;
         }

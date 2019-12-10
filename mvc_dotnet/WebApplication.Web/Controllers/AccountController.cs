@@ -8,6 +8,7 @@ using WebApplication.Web.Models.Account;
 using WebApplication.Web.Providers.Auth;
 using WebApplication.Web.DAL;
 
+
 namespace WebApplication.Web.Controllers
 {    
     public class AccountController : Controller
@@ -76,21 +77,75 @@ namespace WebApplication.Web.Controllers
 
         [AuthorizationFilter("Admin")]  //<-- or filtered to only those that have a certain role
         [HttpGet]
-        public IActionResult UpdateUser()
-        {
-            var user = authProvider.GetCurrentUser();
-            return View(user);
-        }
-
-
-        [HttpGet]
         public IActionResult ListOfUsers()
         {
             List<User> allUsers = userDAL.GetAllUsers();
 
+            User user = new User();
+
+            TempData["User"] = user;
 
             return View(allUsers);
         }
+
+        [HttpPost]
+        public IActionResult ResetUser(User user)
+        {
+
+            HashProvider hashProvider = new HashProvider();
+
+            HashedPassword newPasscode = hashProvider.HashPassword(user.Password);
+
+            user.Salt = newPasscode.Salt;
+            user.Password = newPasscode.Password;
+            userDAL.UpdateUser(user);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        [AuthorizationFilter("Admin", "Teacher")]
+        public IActionResult CreateUser(User user)
+        {
+            User currentUser = authProvider.GetCurrentUser();
+            TempData["User"] = currentUser;
+
+
+            return View();
+        }
+
+
+        public IActionResult CreateUserForm(User user)
+        {
+
+            HashProvider hashProvider = new HashProvider();
+            HashedPassword newPasscode = hashProvider.HashPassword(user.Password);
+
+            user.Salt = newPasscode.Salt;
+            user.Password = newPasscode.Password;
+
+            userDAL.CreateUser(user);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+
+
+
+
+
+
+        //[HttpPost]
+        //[AuthorizationFilter("Admin", "Teacher")]
+        //public IActionResult CreateUser()
+        //{
+        //    User currentUser = authProvider.GetCurrentUser();
+        //    TempData["User"] = currentUser;
+
+        //    return View();
+        //}
 
 
 
