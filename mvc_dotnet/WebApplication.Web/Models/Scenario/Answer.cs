@@ -9,5 +9,7 @@ namespace WebApplication.Web.Models.Scenario
     {
         public int AnswerId { get; set; }
         public string AnswerText { get; set; }
+        public string ResponseText { get; set; }
+        public string ResponseImage { get; set; }
     }
 }

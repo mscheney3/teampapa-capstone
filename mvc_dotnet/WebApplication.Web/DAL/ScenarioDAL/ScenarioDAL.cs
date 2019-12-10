@@ -14,6 +14,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetAllUserScenarios = "SELECT * FROM scenarios JOIN students ON students.scenario_id = scenarios.scenario_id WHERE students.student_id = @studentId";
         private readonly string sql_GetUserScenarios = "SELECT * FROM scenarios WHERE scenario_id = @scenarioId";
         private readonly string sql_GetAllScenarios = "SELECT * FROM scenarios";
+        private readonly string sql_GetScenarioAnswers = "SELECT * FROM answers WHERE scenario_id = @scenarioId";
 
         public ScenarioDAL(string connectionString)
         {
@@ -81,7 +82,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Name = Convert.ToString(reader["scenario_name"]);
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
-
+                        scenario.Question = Convert.ToString(reader["question"]);
                     }
                 }
             }
@@ -89,6 +90,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 throw ex;
             }
+
+
 
             return scenario;
         }
@@ -126,6 +129,20 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             }
 
             return scenarios;
+        }
+
+        public List<Answer> GetScenarioAnswers(Scenario scenario)
+        {
+            List<Answer> answers = new List<Answer>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_GetScenarioAnswers, conn);
+                }
+            }
+            return answers;
         }
     }
 }
