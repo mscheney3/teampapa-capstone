@@ -40,6 +40,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
                         scenario.Id = Convert.ToInt32(reader["scenario_id"]);
                         scenario.Name = Convert.ToString(reader["scenario_name"]);
+                        scenario.Description = Convert.ToString(reader["description"]);
+                        scenario.ImageName = Convert.ToString(reader["scenario_image"]);
 
                         scenarios.Add(scenario);
 
@@ -77,6 +79,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     {
                         scenario.Id = Convert.ToInt32(reader["scenario_id"]);
                         scenario.Name = Convert.ToString(reader["scenario_name"]);
+                        scenario.Description = Convert.ToString(reader["description"]);
+                        scenario.ImageName = Convert.ToString(reader["scenario_image"]);
 
                     }
                 }
@@ -108,6 +112,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
                         scenario.Id = Convert.ToInt32(reader["scenario_id"]);
                         scenario.Name = Convert.ToString(reader["scenario_name"]);
+                        scenario.Description = Convert.ToString(reader["description"]);
+                        scenario.ImageName = Convert.ToString(reader["scenario_image"]);
 
                         scenarios.Add(scenario);
 
