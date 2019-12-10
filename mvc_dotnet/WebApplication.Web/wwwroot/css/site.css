@@ -55,3 +55,27 @@ body {
     height: 350px;
     width: 500px;
 }
+
+.page {
+    margin-top: 150px;
+}
+
+.response {
+    display: grid;
+    grid-auto-rows: 1fr 1fr;
+    margin: 30px 80px 30px 0px;
+    grid-template-areas: 'text image'
+}
+
+#response-image {
+    display: inline-block;
+    grid-area: image;
+    margin: 0px;
+    height: 50%;
+    width: 50%;
+}
+
+#response-text {
+    grid-area: text;
+    margin: 0px;
+}
