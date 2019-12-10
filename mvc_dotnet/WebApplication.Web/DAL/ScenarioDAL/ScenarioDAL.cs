@@ -142,6 +142,10 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     SqlCommand cmd = new SqlCommand(sql_GetScenarioAnswers, conn);
                 }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return answers;
         }
     }
