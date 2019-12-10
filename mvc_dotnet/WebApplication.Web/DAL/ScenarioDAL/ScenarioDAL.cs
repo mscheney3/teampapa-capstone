@@ -91,7 +91,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 throw ex;
             }
 
-
+            scenario.AnswerList = GetScenarioAnswers(scenario);
 
             return scenario;
         }
@@ -140,8 +140,28 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql_GetScenarioAnswers, conn);
+                    cmd.Parameters.AddWithValue("@scenarioId", scenario.Id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Answer answer = new Answer();
+
+                        answer.AnswerId = Convert.ToInt32(reader["answer_id"]);
+                        answer.AnswerText = Convert.ToString(reader["answer_text"]);
+                        answer.ResponseImage = Convert.ToString(reader["response_image"]);
+                        answer.ResponseText = Convert.ToString(reader["response_text"]);
+
+                        answers.Add(answer);
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
             return answers;
         }
     }
