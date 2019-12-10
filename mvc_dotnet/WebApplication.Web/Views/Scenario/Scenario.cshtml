@@ -20,7 +20,15 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
+        <dd>
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+        <dd>
+            @foreach (var item in Model.AnswerList)
+            {
+                <a id="go-to-response" asp-action="Response" asp-route-id="@item.AnswerId">@item.AnswerText</a>
+            }
+        </dd>
     </dl>
 </div>
 <div>

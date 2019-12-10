@@ -14,6 +14,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         List<Scenario> GetAllScenarios();
 
-        List<Answer> GetScenarioAnswers(Scenario scenario);
+        List<Answer> GetScenarioAnswers(int scenarioId);
+
+        Answer GetResponse(int answerId);
     }
 }

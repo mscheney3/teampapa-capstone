@@ -15,6 +15,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetUserScenarios = "SELECT * FROM scenarios WHERE scenario_id = @scenarioId";
         private readonly string sql_GetAllScenarios = "SELECT * FROM scenarios";
         private readonly string sql_GetScenarioAnswers = "SELECT * FROM answers WHERE scenario_id = @scenarioId";
+        private readonly string sql_GetResponse = "SELECT * FROM answers WHERE answer_id = @answerId";
 
         public ScenarioDAL(string connectionString)
         {
@@ -91,7 +92,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 throw ex;
             }
 
-            scenario.AnswerList = GetScenarioAnswers(scenario);
+            scenario.AnswerList = GetScenarioAnswers(scenario.Id);
 
             return scenario;
         }
@@ -131,7 +132,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             return scenarios;
         }
 
-        public List<Answer> GetScenarioAnswers(Scenario scenario)
+        public List<Answer> GetScenarioAnswers(int scenarioId)
         {
             List<Answer> answers = new List<Answer>();
             try
@@ -140,7 +141,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql_GetScenarioAnswers, conn);
-                    cmd.Parameters.AddWithValue("@scenarioId", scenario.Id);
+                    cmd.Parameters.AddWithValue("@scenarioId", scenarioId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -164,6 +165,29 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
 
             return answers;
+        }
+
+        public Answer GetResponse (int answerId)
+        {
+            Answer answer = new Answer();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql_GetResponse, conn);
+                cmd.Parameters.AddWithValue("@answerId", answerId);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    answer.AnswerId = Convert.ToInt32(reader["answer_id"]);
+                    answer.AnswerText = Convert.ToString(reader["answer_text"]);
+                    answer.ResponseImage = Convert.ToString(reader["response_image"]);
+                    answer.ResponseText = Convert.ToString(reader["response_text"]);
+                }
+            }
+            return answer;
         }
     }
 }
