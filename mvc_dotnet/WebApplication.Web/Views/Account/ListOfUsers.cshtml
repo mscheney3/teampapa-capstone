@@ -1,0 +1,21 @@
+﻿@using WebApplication.Web.Models.Account;
+@model List<User>
+@{
+    ViewData["Title"] = "ListOfUsers";
+}
+
+
+<h2>List of Users</h2>
+
+<h4>List of Users:</h4>
+
+@foreach (User users in Model)
+{
+    <tr>
+        <td>@users.Id</td>
+        <td>@users.Username</td>
+        <td>@users.Role</td>
+    </tr><br/>
+
+}
+

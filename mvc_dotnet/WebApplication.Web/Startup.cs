@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication.Web.DAL;
+using WebApplication.Web.DAL.ScenarioDAL;
 using WebApplication.Web.Providers.Auth;
 
 namespace WebApplication.Web
@@ -51,6 +52,7 @@ namespace WebApplication.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IAuthProvider, SessionAuthProvider>();
             services.AddTransient<IUserDAL>(m => new UserSqlDAL(connectionString));
+            services.AddTransient<IScenarioDAL>(m => new ScenarioDAL(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -79,6 +81,10 @@ namespace WebApplication.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            ConnectionString = Configuration["ConnectionStrings:DefaultConnetion"];
         }
+
+        public static string ConnectionString { get; private set; }
     }
 }
