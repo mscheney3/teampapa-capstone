@@ -70,7 +70,6 @@ CREATE TABLE frames
 (
 frame_id int not null identity (1,1),
 scenario_id int not null,
-question_id int not null,
 situation_text varchar(200) not null,
 situation_image varchar(50) not null
 
@@ -110,9 +109,6 @@ ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
 
 ALTER TABLE frames
  ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
-
- ALTER TABLE frames
- ADD FOREIGN KEY (question_id) REFERENCES questions(question_id);
 
  ALTER TABLE questions
  ADD FOREIGN KEY (frame_id) REFERENCES frames(frame_id);
