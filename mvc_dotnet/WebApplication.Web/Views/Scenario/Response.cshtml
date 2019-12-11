@@ -22,5 +22,5 @@
 </div>
 <nav class="navigation">
     <a asp-action="Index">Back to List</a>
-    <!--ADD asp-action for the next scenario page, might need another method in Scenario controller-->
+    <a asp-action="NextScenario" asp-route-id="@Model.ScenarioId">Next Scene</a>
 </nav>
