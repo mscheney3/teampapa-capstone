@@ -35,5 +35,11 @@ namespace WebApplication.Web.Controllers
             Scenario scenario = scenarioDAL.GetUserScenario(id);
             return View(scenario);
         }
+
+        public IActionResult Response(int id)
+        {
+            Answer response = scenarioDAL.GetResponse(id);
+            return View(response);
+        }
     }
 }
