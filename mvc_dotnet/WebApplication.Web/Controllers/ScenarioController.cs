@@ -87,7 +87,7 @@ namespace WebApplication.Web.Controllers
 
             assignmentDAL.AssignScenario(studentId, scenarioId);
 
-            return RedirectToAction("AssignScenario", "Account");
+            return RedirectToAction("AssignScenario", "Scenario");
         }
     }
 }
