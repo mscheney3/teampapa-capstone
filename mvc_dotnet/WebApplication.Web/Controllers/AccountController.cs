@@ -178,8 +178,23 @@ namespace WebApplication.Web.Controllers
             IList<User> teachers = assignmentDAL.GetAllTeachers();
             TempData["teachers"] = teachers;
 
+
             return View();
         }
+
+        [HttpGet]
+        public IActionResult AssignStudentToTeacher(int studentId, int teacherId)
+        {
+
+
+            assignmentDAL.AssignStudent(studentId, teacherId);
+
+            return RedirectToAction("AssignStudent", "Account");
+        }
+
+
+
+
 
 
 

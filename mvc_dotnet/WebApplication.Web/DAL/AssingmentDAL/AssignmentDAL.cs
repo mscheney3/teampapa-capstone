@@ -77,7 +77,7 @@ namespace WebApplication.Web.DAL.AssingmentDAL
             }
         }
 
-        public bool AssignStudent(User teacherID, User studentID)
+        public bool AssignStudent(int teacherID, int studentID)
         {
             bool result = false;
             int affected = 0;

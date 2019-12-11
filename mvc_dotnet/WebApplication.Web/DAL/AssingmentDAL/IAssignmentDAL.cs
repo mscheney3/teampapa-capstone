@@ -13,7 +13,7 @@ namespace WebApplication.Web.DAL.AssingmentDAL
 
         IList<User> GetAllTeachers();
 
-        bool AssignStudent(User teacherID, User studentID);
+        bool AssignStudent(int teacherID, int studentID);
 
 
 
