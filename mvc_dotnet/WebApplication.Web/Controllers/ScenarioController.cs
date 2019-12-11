@@ -29,10 +29,11 @@ namespace WebApplication.Web.Controllers
         {
             User user = authProvider.GetCurrentUser();
 
-            if(user == null) {
+            if(user == null)
+            {
                 return RedirectToAction("Login", "Account");
             }
-
+    
             List<Scenario> scenarios = scenarioDAL.GetAllUserScenarios(user.Id);
 
             return View(scenarios);
@@ -57,11 +58,11 @@ namespace WebApplication.Web.Controllers
 
             if (nextScenario.Id == 0)
             {
-                return RedirectToAction("Index", "Scenario");
+                return RedirectToAction("Review", "Scenario");
             }
-
             return RedirectToAction("scenario", new { id = nextScenario.Id });
         }
+
         [HttpGet]
         [AuthorizationFilter("Admin", "Teacher")]
         public IActionResult AssignScenario()
@@ -72,10 +73,8 @@ namespace WebApplication.Web.Controllers
             IList<Scenario> scenarios = scenarioDAL.GetAllScenarios();
             TempData["scenarios"] = scenarios;
 
-
             IList<User> students = assignmentDAL.GetAllStudents();
             TempData["students"] = students;
-
 
             return View();
         }
@@ -83,6 +82,7 @@ namespace WebApplication.Web.Controllers
         [HttpGet]
         public IActionResult AssignScenarioToStudent(int studentId, int scenarioId)
         {
+
            assignmentDAL.AssignScenario(studentId, scenarioId);          
                 
            return RedirectToAction("AssignScenario", "Scenario");
@@ -92,11 +92,20 @@ namespace WebApplication.Web.Controllers
         [HttpGet]
         public IActionResult UnassignScenario(int studentId, int scenarioId)
         {
-
-
             assignmentDAL.UnassignScenario(studentId, scenarioId);
 
             return RedirectToAction("AssignScenario", "Scenario");
+        }
+
+        public IActionResult Review()
+        {
+            User currentUser = authProvider.GetCurrentUser();
+
+            List<Review> reviews = new List<Review>();
+
+            reviews = scenarioDAL.GetReview(currentUser.Id);
+
+            return View(reviews);
         }
     }
 }
