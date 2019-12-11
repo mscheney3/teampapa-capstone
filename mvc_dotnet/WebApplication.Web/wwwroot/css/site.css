@@ -103,6 +103,8 @@ body{
 
 .navbar-brand {
     font-size: x-large;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .home-page{
@@ -126,3 +128,12 @@ body{
     color: white;
 }
 
+#home-logo{
+    border-radius: 12%;
+    width: 25%;
+}
+
+#nav-logo{
+    height: 100%;
+    margin-right: 8px;
+}
