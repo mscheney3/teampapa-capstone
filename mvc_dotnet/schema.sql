@@ -86,4 +86,20 @@ ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
  ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
 
 
+INSERT INTO scenarios (scenario_name, description, scenario_image, question) VALUES ('Classroom', 'Your teacher asks you to read aloud', 'classroomscenario.png', 'Would you like to read?');
+INSERT INTO scenarios (scenario_name, description, scenario_image, question) VALUES ('Hallway', 'You want to place your books in your locker. However, your neighbor is blocking your locker.', 'hallwayscenario.png', 'Do you:');
+INSERT INTO scenarios (scenario_name, description, scenario_image, question) VALUES ('Soccer', 'You need to choose your next move.', 'outdoorscenario.png', 'Do you:');
+
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'A) Sure', 'Good job!', 'classroomsure.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'B) No', 'People will support you if you try.', 'classroomno.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'C) Start reading', 'Your teacher expects you to answer before reading', 'classroomstartreading.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (2, 'A) Walk away', 'People will help if you ask', 'hallwaywalkaway.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (2, 'B) Squeeze in front of classmate', 'Next time ask me to move over and I will', 'hallwaysqueeze.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (2, 'C) Say "excuse me"', 'Classmates will always listen if you are nice to them', 'hallwaysayexcuseme.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'A) Steal ball', 'You should ask for the pass. If you hurt others feeling it is good to apologize', 'soccerstealball.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'B) Do/Say nothing', 'The other team scored and everyone is happy for them', 'soccernothing.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'C) Call for ball', 'Nice shot!', 'soccercallforball.png');
+ 
+
+
 COMMIT TRANSACTION;
