@@ -24,7 +24,7 @@ CREATE TABLE users
 	username	varchar(50)	not null,
 	password	varchar(50)	not null,
 	salt		varchar(50)	not null,
-	role		varchar(50)	default('student'),
+	role		varchar(50)	default('Student'),
 
 	constraint pk_users primary key (id)
 );
@@ -100,6 +100,8 @@ INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VA
 INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'B) Do/Say nothing', 'The other team scored and everyone is happy for them', 'soccernothing.png');
 INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'C) Call for ball', 'Nice shot!', 'soccercallforball.png');
  
-
+ INSERT INTO users (username, password, salt, role) VALUES ('admin@admin.com', 'UT3zZWao733yZCgthmNJJxs5NCg=', 'NuE0Y6FonAI=', 'Admin');
+ INSERT INTO users (username, password, salt, role) VALUES ('teacher@teacher.com', 'UT3zZWao733yZCgthmNJJxs5NCg=', 'NuE0Y6FonAI=', 'Teacher');
+  INSERT INTO users (username, password, salt, role) VALUES ('student@student.com', 'UT3zZWao733yZCgthmNJJxs5NCg=', 'NuE0Y6FonAI=', 'Student');
 
 COMMIT TRANSACTION;
