@@ -5,9 +5,9 @@
     User currentUser = TempData["User"] as User;
 }
 
-<div id="createuser">
-    <h2>Create User</h2>
-
+<div class="body-styling">
+    <h2 id="createusertitle" class="maintitle">Create User</h2>
+    <br/>
 
     <form asp-controller="account" asp-action="CreateUserForm" method="post">
 
@@ -20,10 +20,12 @@
             <input type="password" asp-for="Password" />
 
         </div>
+
         <div class="form-group">
             <input type="hidden" asp-for="Salt" />
         </div>
 
+        <label class="role">Role of New User:</label>
         @if (currentUser.Role == "Admin")
         {
             <div class="form-group">

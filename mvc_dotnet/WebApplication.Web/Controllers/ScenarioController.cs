@@ -85,7 +85,6 @@ namespace WebApplication.Web.Controllers
         public IActionResult AssignScenarioToStudent(int studentId, int scenarioId)
         {
 
-
             assignmentDAL.AssignScenario(studentId, scenarioId);
 
             return RedirectToAction("AssignScenario", "Scenario");
