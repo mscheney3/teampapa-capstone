@@ -36,6 +36,12 @@ body {
     }
 }
 
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 2%;
+}
+
 .answer {
     background-color: green;
     color: white;
@@ -60,24 +66,28 @@ body {
     margin-top: 150px;
 }
 
-.response {
-    display: grid;
-    grid-auto-rows: 1fr 1fr;
-    margin: 30px 80px 30px 0px;
-    grid-template-areas: 'text image'
-}
+    .flex-container > div {
+        width: 50%;
+        margin: 10px;
+        text-align: center;
+        line-height: 75px;
+        font-size: 30px;
+        justify-content: center;
+        align-items: center;
+    }
 
 #response-image {
-    display: inline-block;
-    grid-area: image;
-    margin: 0px;
-    height: 50%;
-    width: 50%;
+    width: auto;
 }
 
-#response-text {
-    grid-area: text;
-    margin: 0px;
+dd {
+    text-align: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+nav {
+    font: bold 20px arial, verdana;
 }
 
 

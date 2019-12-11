@@ -4,7 +4,7 @@
     ViewData["Title"] = "Response";
 }
 
-<div class="page">
+<div class="flex-container">
     <div class="response">
         <dl id="response-text">
             <dd>
@@ -15,13 +15,12 @@
                 @Html.DisplayFor(model => model.ResponseText)
             </dd>
         </dl>
-        <div id="response-image">
-            <img src=~/images/@Model.ResponseImage>
-        </div>
     </div>
-    <div>
-        <a asp-action="Index">Back to List</a>
-        <!--ADD asp-action for the next scenario page, might need another method in Scenario controller-->
-        <a asp-action="NextScenario" asp-route-id="@Model.ScenarioId">Next Scene</a>
+    <div id="response-image">
+        <img src=~/images/@Model.ResponseImage>
     </div>
 </div>
+<nav class="navigation">
+    <a asp-action="Index">Back to List</a>
+    <a asp-action="NextScenario" asp-route-id="@Model.ScenarioId">Next Scene</a>
+</nav>
