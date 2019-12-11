@@ -125,7 +125,7 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
-
+        [AuthorizationFilter("Admin", "Teacher")]
         public IActionResult CreateUserForm(User user)
         {
 
