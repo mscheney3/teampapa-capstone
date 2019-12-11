@@ -162,11 +162,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 throw ex;
             }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 8a69acf209f477455a4f1e6f82b50ef3eeb02aa9
             return answers;
         }
 
