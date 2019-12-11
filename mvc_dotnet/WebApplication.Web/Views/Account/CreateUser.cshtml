@@ -5,7 +5,7 @@
     User currentUser = TempData["User"] as User;
 }
 
-<h2>CreateUser</h2>
+<h2>Create User</h2>
 
 
 <form asp-controller="account" asp-action="CreateUserForm" method="post">
@@ -13,23 +13,23 @@
     <div class="form-group">
         <label asp-for="Username"></label>
         <input type="text" asp-for="Username" />
-        <span asp-validation-for="Username"></span>
-    </div>
+        g
     <div class="form-group">
         <label asp-for="Password"></label>
         <input type="password" asp-for="Password" />
-        <span asp-validation-for="Password"></span>
+
     </div>
     <div class="form-group">
         <input type="hidden" asp-for="Salt" />
-        <span asp-validation-for="Salt"></span>
     </div>
+
     @if (currentUser.Role == "Admin")
     {
         <div class="form-group">
             <select asp-for="Role">
                 <Option> Admin </Option>
                 <Option> Teacher </Option>
+                <Option> Student </Option>
             </select>
         </div>
     }

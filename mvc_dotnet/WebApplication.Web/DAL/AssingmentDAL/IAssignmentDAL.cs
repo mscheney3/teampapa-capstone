@@ -15,6 +15,8 @@ namespace WebApplication.Web.DAL.AssingmentDAL
 
         bool AssignStudent(int teacherID, int studentID);
 
+        bool AssignScenario(int studentID, int scenarioID);
+
 
 
 

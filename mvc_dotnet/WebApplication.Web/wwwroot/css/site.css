@@ -78,7 +78,7 @@ body {
     }
 
 #response-image {
-    width: auto;
+    width: 80%;
 }
 
 dd {
@@ -87,10 +87,53 @@ dd {
     margin-top: 10%;
 }
 
-nav {
+.navigation {
     font: bold 20px arial, verdana;
 }
 
+
 body{
     background-color: lightgoldenrodyellow;
+}
+
+
+#student-answer{
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-size: x-large;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.home-page{
+    text-align: center;
+    margin-top: 5%;
+}
+
+#home-disc{
+    font-size: large;
+}
+
+.home-spacing{
+    margin: 20px;
+}
+
+#mainnavbar {
+    background-color: cornflowerblue;
+}
+
+#mainnavbar a {
+    color: white;
+}
+
+#home-logo{
+    border-radius: 12%;
+    width: 25%;
+}
+
+#nav-logo{
+    height: 100%;
+    margin-right: 8px;
 }

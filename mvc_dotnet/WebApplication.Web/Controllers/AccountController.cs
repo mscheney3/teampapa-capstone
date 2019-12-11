@@ -8,6 +8,8 @@ using WebApplication.Web.Models.Account;
 using WebApplication.Web.Providers.Auth;
 using WebApplication.Web.DAL;
 using WebApplication.Web.DAL.AssingmentDAL;
+using WebApplication.Web.DAL.ScenarioDAL;
+using WebApplication.Web.Models.Scenario;
 
 namespace WebApplication.Web.Controllers
 {    
@@ -16,6 +18,7 @@ namespace WebApplication.Web.Controllers
         private readonly IAuthProvider authProvider;
         private readonly IUserDAL userDAL;
         private readonly IAssignmentDAL assignmentDAL;
+      
 
         private const string UserIdKey = "User_ID"; 
 
@@ -41,6 +44,12 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Error()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel loginViewModel)
@@ -53,7 +62,7 @@ namespace WebApplication.Web.Controllers
                 if (validLogin)
                 {
                     // Redirect the user where you want them to go after successful login
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Scenario");
                 }
             }
 
@@ -116,7 +125,7 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
-
+        [AuthorizationFilter("Admin", "Teacher")]
         public IActionResult CreateUserForm(User user)
         {
 
