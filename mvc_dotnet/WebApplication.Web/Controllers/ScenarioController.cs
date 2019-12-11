@@ -29,11 +29,11 @@ namespace WebApplication.Web.Controllers
         {
             User user = authProvider.GetCurrentUser();
 
-            if(user == null) {
-
-            return RedirectToAction("Login", "Account");
+            if(user == null)
+            {
+                return RedirectToAction("Login", "Account");
             }
-
+    
             List<Scenario> scenarios = scenarioDAL.GetAllUserScenarios(user.Id);
 
             return View(scenarios);
@@ -82,9 +82,11 @@ namespace WebApplication.Web.Controllers
         [HttpGet]
         public IActionResult AssignScenarioToStudent(int studentId, int scenarioId)
         {
-            assignmentDAL.AssignScenario(studentId, scenarioId);
 
-            return RedirectToAction("AssignScenario", "Scenario");
+           assignmentDAL.AssignScenario(studentId, scenarioId);          
+                
+           return RedirectToAction("AssignScenario", "Scenario");
+         
         }
 
         [HttpGet]
