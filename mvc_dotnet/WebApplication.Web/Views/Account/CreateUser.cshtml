@@ -13,16 +13,15 @@
     <div class="form-group">
         <label asp-for="Username"></label>
         <input type="text" asp-for="Username" />
-        <span asp-validation-for="Username"></span>
+
     </div>
     <div class="form-group">
         <label asp-for="Password"></label>
         <input type="password" asp-for="Password" />
-        <span asp-validation-for="Password"></span>
+
     </div>
     <div class="form-group">
         <input type="hidden" asp-for="Salt" />
-        <span asp-validation-for="Salt"></span>
     </div>
     @if (currentUser.Role == "Admin")
     {
