@@ -11,5 +11,6 @@ namespace WebApplication.Web.Models.Scenario
         public string AnswerText { get; set; }
         public string ResponseText { get; set; }
         public string ResponseImage { get; set; }
+        public int ScenarioId { get; set; }
     }
 }

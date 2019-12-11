@@ -41,5 +41,18 @@ namespace WebApplication.Web.Controllers
             Answer response = scenarioDAL.GetResponse(id);
             return View(response);
         }
+
+        public IActionResult NextScenario(int id)
+        {
+            User user = authProvider.GetCurrentUser();
+            Scenario nextScenario = scenarioDAL.GetNextScenario(user.Id, id);
+
+            if (nextScenario.Id == 0)
+            {
+                return RedirectToAction("Index", "Scenario");
+            }
+
+            return RedirectToAction("scenario", new { id = nextScenario.Id});
+        }
     }
 }
