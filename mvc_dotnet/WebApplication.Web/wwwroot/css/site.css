@@ -95,3 +95,24 @@ dd {
 body{
     background-color: lightgoldenrodyellow;
 }
+
+#student-answer{
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-size: x-large;
+}
+
+.home-page{
+    text-align: center;
+    margin-top: 5%;
+}
+
+#home-disc{
+    font-size: large;
+}
+
+.home-spacing{
+    margin: 20px;
+}
