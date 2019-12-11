@@ -1,0 +1,26 @@
+﻿@model WebApplication.Web.Models.Scenario.Answer
+
+@{
+    ViewData["Title"] = "Response";
+}
+
+<div class="page">
+    <div class="response">
+        <dl id="response-text">
+            <dd>
+                You answered "@Html.DisplayFor(model => model.AnswerText)"
+            </dd>
+            <br />
+            <dd>
+                @Html.DisplayFor(model => model.ResponseText)
+            </dd>
+        </dl>
+        <div id="response-image">
+            <img src=~/images/@Model.ResponseImage>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+        <!--ADD asp-action for the next scenario page, might need another method in Scenario controller-->
+    </div>
+</div>

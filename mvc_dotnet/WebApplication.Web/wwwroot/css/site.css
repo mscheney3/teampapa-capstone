@@ -35,3 +35,47 @@ body {
         display: none;
     }
 }
+
+.answer {
+    background-color: green;
+    color: white;
+    padding: 14px 25px;
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+    display: inline-block
+}
+
+    .answer:hover {
+        background-color: red;
+        text-decoration: none !important;
+        color: white;
+    }
+
+.scenario-image {
+    height: 350px;
+    width: 500px;
+}
+
+.page {
+    margin-top: 150px;
+}
+
+.response {
+    display: grid;
+    grid-auto-rows: 1fr 1fr;
+    margin: 30px 80px 30px 0px;
+    grid-template-areas: 'text image'
+}
+
+#response-image {
+    display: inline-block;
+    grid-area: image;
+    margin: 0px;
+    height: 50%;
+    width: 50%;
+}
+
+#response-text {
+    grid-area: text;
+    margin: 0px;
+}

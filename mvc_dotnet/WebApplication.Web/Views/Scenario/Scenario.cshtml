@@ -4,24 +4,28 @@
     ViewData["Title"] = "Scenario";
 }
 
-<h2>Scenario</h2>
+<h2 class="scenario-description">@Model.Description</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            <img src=~/images/@Model.ImageName class="scenario-image">
         </dd>
-    </dl>
-    <dl class="dl-horizontal">
+
         <dd>
-            <img src=~/images/@Model.ImageName style="height:350px; width:500px;">
+            <h3 class="question">@Html.DisplayFor(model => model.Question)</h3>
         </dd>
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @foreach (var item in Model.AnswerList)
+            {
+            <div >
+                <a class="answer" id="go-to-response" asp-action="Response" asp-route-id="@item.AnswerId">@item.AnswerText</a>
+            </div>
+            }
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Scenes</a>
 </div>
