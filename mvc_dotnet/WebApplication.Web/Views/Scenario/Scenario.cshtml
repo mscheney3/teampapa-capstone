@@ -7,21 +7,20 @@
 <h2 class="scenario-description">@Model.Description</h2>
 
 <div>
-    
-        <div>
-            <img src=~/images/Classroom/@Model.ImageName class="scenario-image">
-        </div>
 
-        <div>
-            <h3 class="question">@Html.DisplayFor(model => model.Question)</h3>
-        </div>
-        <div>
-            @foreach (var item in Model.AnswerList)
-            {
-            <div >
+    <div>
+        <img src=~/images/@Model.ImageName class="scenario-image">
+    </div>
+    <div>
+        <h3 class="question">@Html.DisplayFor(model => model.Question)</h3>
+    </div>
+    <div>
+        @foreach (var item in Model.AnswerList)
+        {
+            <div>
                 <a class="answer" id="go-to-response" asp-action="Response" asp-route-id="@item.AnswerId">@item.AnswerText</a>
             </div>
-            }
-        </div>
+        }
+    </div>
 </div>
 
