@@ -7,7 +7,7 @@ using WebApplication.Web.Models;
 using WebApplication.Web.Models.Account;
 using WebApplication.Web.Providers.Auth;
 using WebApplication.Web.DAL;
-
+using WebApplication.Web.DAL.AssingmentDAL;
 
 namespace WebApplication.Web.Controllers
 {    
@@ -15,13 +15,15 @@ namespace WebApplication.Web.Controllers
     {
         private readonly IAuthProvider authProvider;
         private readonly IUserDAL userDAL;
+        private readonly IAssignmentDAL assignmentDAL;
 
         private const string UserIdKey = "User_ID"; 
 
-        public AccountController(IAuthProvider authProvider, IUserDAL userDAL)
+        public AccountController(IAuthProvider authProvider, IUserDAL userDAL, IAssignmentDAL assignmentDAL)
         {
             this.authProvider = authProvider;
             this.userDAL = userDAL;
+            this.assignmentDAL = assignmentDAL;
         }
         
         //[AuthorizationFilter] // actions can be filtered to only those that are logged in
@@ -129,25 +131,10 @@ namespace WebApplication.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-
-
-
-
-
-
-
-        //[HttpPost]
-        //[AuthorizationFilter("Admin", "Teacher")]
-        //public IActionResult CreateUser()
-        //{
-        //    User currentUser = authProvider.GetCurrentUser();
-        //    TempData["User"] = currentUser;
-
-        //    return View();
-        //}
-
-
+        public IActionResult AssignStudent(User user)
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult ChangePassword()
@@ -175,6 +162,23 @@ namespace WebApplication.Web.Controllers
             }
 
             return View(changePasswordModel);
+        }
+
+
+
+        [HttpGet]
+        public IActionResult AssignStudent()
+        {
+            User currentUser = authProvider.GetCurrentUser();
+
+            IList<User> students = assignmentDAL.GetAllStudents();
+            TempData["students"] = students;
+
+
+            IList<User> teachers = assignmentDAL.GetAllTeachers();
+            TempData["teachers"] = teachers;
+
+            return View();
         }
 
 
