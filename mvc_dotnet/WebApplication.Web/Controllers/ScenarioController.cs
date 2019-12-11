@@ -59,9 +59,9 @@ namespace WebApplication.Web.Controllers
             {
                 return RedirectToAction("Index", "Scenario");
             }
-
             return RedirectToAction("scenario", new { id = nextScenario.Id});
         }
+
         [HttpGet]
         [AuthorizationFilter("Admin", "Teacher")]
         public IActionResult AssignScenario()
@@ -72,10 +72,8 @@ namespace WebApplication.Web.Controllers
             IList<Scenario> scenarios = scenarioDAL.GetAllScenarios();
             TempData["scenarios"] = scenarios;
 
-
             IList<User> students = assignmentDAL.GetAllStudents();
             TempData["students"] = students;
-
 
             return View();
         }
@@ -83,11 +81,14 @@ namespace WebApplication.Web.Controllers
         [HttpGet]
         public IActionResult AssignScenarioToStudent(int studentId, int scenarioId)
         {
-
-
             assignmentDAL.AssignScenario(studentId, scenarioId);
 
             return RedirectToAction("AssignScenario", "Scenario");
         }
+
+        //public IActionResult Review(int userId)
+        //{
+
+        //}
     }
 }

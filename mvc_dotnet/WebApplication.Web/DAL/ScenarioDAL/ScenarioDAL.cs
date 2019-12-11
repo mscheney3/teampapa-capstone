@@ -16,6 +16,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetAllScenarios = "SELECT * FROM scenarios";
         private readonly string sql_GetScenarioAnswers = "SELECT * FROM answers WHERE scenario_id = @scenarioId";
         private readonly string sql_GetResponse = "SELECT * FROM answers WHERE answer_id = @answerId";
+        private readonly string sql_GetReview = "SELECT * FROM review WHERE user_id = @userId";
 
         public ScenarioDAL(string connectionString)
         {
@@ -218,13 +219,27 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
             return nextScenario;
 
-            //int currentIndex = userScenarios.IndexOf(currentScenario);
-            //currently fails because Answer list is null in the list
-            //if (userScenarios.Count > (currentIndex + 1))
-                //{
-                //    nextScenario = userScenarios[currentIndex + 1];
-                //}
-
         }
+
+        //public List<Scenario> GetReview(int userId)
+        //{
+        //    List<Scenario> reviewScenarios = new List<Scenario>();
+
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        conn.Open();
+        //        SqlCommand cmd = new SqlCommand(sql_GetReview, conn);
+        //        cmd.Parameters.AddWithValue("@userId", userId);
+
+        //        SqlDataReader reader = cmd.ExecuteReader();
+
+        //        while (reader.Read())
+        //        {
+        //            reviewScenarios. = Convert.ToInt32(reader["answer_id"]);
+        //            answer.AnswerText = Convert.ToString(reader["answer_text"]);
+        //        }
+        //    }
+        //    return reviewScenarios;
+        //}
     }
 }

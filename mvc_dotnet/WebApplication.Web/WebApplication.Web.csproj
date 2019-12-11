@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\outdoorscenario.PNG" />
     <Content Remove="wwwroot\images\placeholder.png" />
     <Content Remove="wwwroot\images\soccerdosaynothing.PNG" />
     <Content Remove="wwwroot\images\soccerscenario.PNG" />
