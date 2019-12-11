@@ -19,7 +19,7 @@
 
 <div class="form-group">
     <label> Student Look up </label>
-    <select asp-for="Id" name="scenarioId">
+    <select asp-for="Id" name="studentId">
         @foreach (var student in students)
             {
         <option>@student.Id @student.Username</option>
@@ -27,12 +27,12 @@
     </select>
 </div>
 
-<h3> Assign </h3>
+<h3> Assign Scenario</h3>
 
-<form asp-controller="account" asp-action="AssignStudentToTeacher" method="get">
+<form asp-controller="scenario" asp-action="AssignScenarioToStudent" method="get">
     <div class="form-group">
-        <label>Teacher</label>
-        <select asp-for="Id" name="teacherId">
+        <label>Student</label>
+        <select asp-for="Id" name="studentId">
             @foreach (var student in students)
             {
             <option> @student.Id </option>
@@ -41,14 +41,14 @@
     </div>
 
     <div class="form-group">
-        <label>Student</label>
-        <select asp-for="Id" name="studentId">
+        <label>Scenario</label>
+        <select asp-for="Id" name="scenarioId">
             @foreach (var scenario in scenarios)
             {
             <option> @scenario.Id </option>
             }
         </select>
     </div>
-    <input type="submit" value="Assign Student" class="btn btn-default" />
+    <input type="submit" value="Assign Scenario" class="btn btn-default" />
 </form>
 
