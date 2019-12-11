@@ -6,6 +6,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\images\Classroom\**" />
+    <Compile Remove="wwwroot\images\Hallway\**" />
+    <Compile Remove="wwwroot\images\Soccer\**" />
+    <Content Remove="wwwroot\images\Classroom\**" />
+    <Content Remove="wwwroot\images\Hallway\**" />
+    <Content Remove="wwwroot\images\Soccer\**" />
+    <EmbeddedResource Remove="wwwroot\images\Classroom\**" />
+    <EmbeddedResource Remove="wwwroot\images\Hallway\**" />
+    <EmbeddedResource Remove="wwwroot\images\Soccer\**" />
+    <None Remove="wwwroot\images\Classroom\**" />
+    <None Remove="wwwroot\images\Hallway\**" />
+    <None Remove="wwwroot\images\Soccer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\soccerdosaynothing.PNG" />
+    <Content Remove="wwwroot\images\soccerscenario.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
