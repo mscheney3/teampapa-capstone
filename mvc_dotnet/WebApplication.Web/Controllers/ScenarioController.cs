@@ -30,7 +30,7 @@ namespace WebApplication.Web.Controllers
             User user = authProvider.GetCurrentUser();
 
             if(user == null) {
-                return RedirectToAction("Error", "Account");
+                return RedirectToAction("Login", "Account");
             }
 
             List<Scenario> scenarios = scenarioDAL.GetAllUserScenarios(user.Id);

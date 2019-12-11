@@ -104,4 +104,13 @@ body{
     color: white;
 }
 
+#createuser{
+    text-align:center;
+    font-size: 20px;
+}
+
+#createuser h1{
+    font-size: 50px;
+}
+
 
