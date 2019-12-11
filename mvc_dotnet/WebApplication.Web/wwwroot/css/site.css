@@ -43,23 +43,24 @@ body {
 }
 
 .answer {
-    background-color: green;
-    color: white;
+    background-color: darkblue;
     padding: 14px 25px;
     margin: 5px 0px 5px 0px;
     text-align: center;
-    display: inline-block
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 700;
+    color: white;
 }
 
     .answer:hover {
-        background-color: red;
+        background-color: green;
         text-decoration: none !important;
         color: white;
     }
 
 .scenario-image {
-    height: 350px;
-    width: 500px;
+    width: 50%;
 }
 
 .page {
@@ -88,4 +89,8 @@ dd {
 
 nav {
     font: bold 20px arial, verdana;
+}
+
+body{
+    background-color: lightgoldenrodyellow;
 }
