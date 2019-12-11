@@ -44,6 +44,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Name = Convert.ToString(reader["scenario_name"]);
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
+                        scenario.Question = Convert.ToString(reader["question"]);
+                        scenario.AnswerList = GetScenarioAnswers(scenario.Id);
 
                         scenarios.Add(scenario);
 
@@ -84,6 +86,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
                         scenario.Question = Convert.ToString(reader["question"]);
+
                     }
                 }
             }
@@ -118,6 +121,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Name = Convert.ToString(reader["scenario_name"]);
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
+                        scenario.Question = Convert.ToString(reader["question"]);
+                        scenario.AnswerList = GetScenarioAnswers(scenario.Id);
 
                         scenarios.Add(scenario);
 
@@ -163,11 +168,10 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 throw ex;
             }
 
-
             return answers;
         }
 
-        public Answer GetResponse (int answerId)
+        public Answer GetResponse(int answerId)
         {
             Answer answer = new Answer();
 
@@ -185,9 +189,42 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     answer.AnswerText = Convert.ToString(reader["answer_text"]);
                     answer.ResponseImage = Convert.ToString(reader["response_image"]);
                     answer.ResponseText = Convert.ToString(reader["response_text"]);
+                    answer.ScenarioId = Convert.ToInt32(reader["scenario_id"]);
                 }
             }
             return answer;
+        }
+
+        public Scenario GetNextScenario(int studentId, int scenarioId)
+        {
+            Scenario nextScenario = new Scenario();
+            //Scenario currentScenario = GetUserScenario(scenarioId);
+
+            List<Scenario> userScenarios = GetAllUserScenarios(studentId);
+
+            for (int i = 0; i < userScenarios.Count; i++)
+            {
+                if (userScenarios[i].Id == scenarioId)
+                {
+                    if ((i+1)<userScenarios.Count)
+                    {
+                        nextScenario = userScenarios[i + 1];
+                        break;
+
+                    }
+                    break;
+                }
+            }
+
+            return nextScenario;
+
+            //int currentIndex = userScenarios.IndexOf(currentScenario);
+            //currently fails because Answer list is null in the list
+            //if (userScenarios.Count > (currentIndex + 1))
+                //{
+                //    nextScenario = userScenarios[currentIndex + 1];
+                //}
+
         }
     }
 }
