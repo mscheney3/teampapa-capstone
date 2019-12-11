@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication.Web.DAL.AssingmentDAL;
 using WebApplication.Web.DAL.ScenarioDAL;
 using WebApplication.Web.Models;
 using WebApplication.Web.Models.Scenario;
@@ -14,12 +15,14 @@ namespace WebApplication.Web.Controllers
     {
         private IScenarioDAL scenarioDAL;
         private readonly IAuthProvider authProvider;
+        private readonly IAssignmentDAL assignmentDAL;
 
 
-        public ScenarioController(IScenarioDAL scenarioDAL, IAuthProvider authProvider)
+        public ScenarioController(IScenarioDAL scenarioDAL, IAuthProvider authProvider, IAssignmentDAL assignmentDAL)
         {
             this.scenarioDAL = scenarioDAL;
             this.authProvider = authProvider;
+            this.assignmentDAL = assignmentDAL;
         }
 
         public IActionResult Index()
@@ -58,6 +61,33 @@ namespace WebApplication.Web.Controllers
             }
 
             return RedirectToAction("scenario", new { id = nextScenario.Id});
+        }
+        [HttpGet]
+        [AuthorizationFilter("Admin", "Teacher")]
+        public IActionResult AssignScenario()
+
+        {
+            User currentUser = authProvider.GetCurrentUser();
+
+            IList<Scenario> scenarios = scenarioDAL.GetAllScenarios();
+            TempData["scenarios"] = scenarios;
+
+
+            IList<User> students = assignmentDAL.GetAllStudents();
+            TempData["students"] = students;
+
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AssignScenarioToStudent(int studentId, int scenarioId)
+        {
+
+
+            assignmentDAL.AssignScenario(studentId, scenarioId);
+
+            return RedirectToAction("AssignScenario", "Account");
         }
     }
 }

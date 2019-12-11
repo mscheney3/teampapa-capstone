@@ -8,6 +8,8 @@ using WebApplication.Web.Models.Account;
 using WebApplication.Web.Providers.Auth;
 using WebApplication.Web.DAL;
 using WebApplication.Web.DAL.AssingmentDAL;
+using WebApplication.Web.DAL.ScenarioDAL;
+using WebApplication.Web.Models.Scenario;
 
 namespace WebApplication.Web.Controllers
 {    
@@ -16,6 +18,7 @@ namespace WebApplication.Web.Controllers
         private readonly IAuthProvider authProvider;
         private readonly IUserDAL userDAL;
         private readonly IAssignmentDAL assignmentDAL;
+      
 
         private const string UserIdKey = "User_ID"; 
 
