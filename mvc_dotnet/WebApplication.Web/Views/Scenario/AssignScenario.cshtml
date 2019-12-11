@@ -1,0 +1,54 @@
+﻿@using WebApplication.Web.Models.Scenario;
+@model Scenario
+@{
+    ViewData["Title"] = "AssignScenario";
+    List<User> students = TempData["students"] as List<User>;
+    List<Scenario> scenarios = TempData["scenarios"] as List<Scenario>;
+}
+
+<h2>Assign Scenarios To Students</h2>
+<div class="form-group">
+    <label> Scenario Look up </label>
+    <select asp-for="Id" name="scenarioId">
+        @foreach (var scenario in scenarios)
+            {
+        <option>@scenario.Id @scenario.Name</option>
+            }
+    </select>
+</div>
+
+<div class="form-group">
+    <label> Student Look up </label>
+    <select asp-for="Id" name="scenarioId">
+        @foreach (var student in students)
+            {
+        <option>@student.Id @student.Username</option>
+            }
+    </select>
+</div>
+
+<h3> Assign </h3>
+
+<form asp-controller="account" asp-action="AssignStudentToTeacher" method="get">
+    <div class="form-group">
+        <label>Teacher</label>
+        <select asp-for="Id" name="teacherId">
+            @foreach (var student in students)
+            {
+            <option> @student.Id </option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Student</label>
+        <select asp-for="Id" name="studentId">
+            @foreach (var scenario in scenarios)
+            {
+            <option> @scenario.Id </option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Assign Student" class="btn btn-default" />
+</form>
+
