@@ -45,9 +45,10 @@
 
 
 
-                    <ul class="nav navbar-nav navbar-right">
-                        @await Component.InvokeAsync("NavBar") @* Render the NavBar component. *@
-                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                </ul>
                 </div>
             </div>
     </nav>
