@@ -17,9 +17,8 @@ namespace WebApplication.Web.DAL.AssingmentDAL
 
         bool AssignScenario(int studentID, int scenarioID);
 
-
-
-
+        bool UnassignScenario(int studentID, int scenarioID);
+        
     }
 }
 

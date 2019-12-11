@@ -139,12 +139,22 @@ body {
         color: white;
     }
 
-#home-logo {
+#createuser{
+    text-align:center;
+    font-size: 20px;
+}
+
+#createuser h1{
+    font-size: 50px;
+}
+
+#home-logo{
     border-radius: 12%;
     width: 25%;
 }
 
-#nav-logo {
+
+#nav-logo{
     height: 100%;
     margin-right: 8px;
 }

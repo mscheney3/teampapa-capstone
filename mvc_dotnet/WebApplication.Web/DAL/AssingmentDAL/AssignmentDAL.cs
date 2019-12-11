@@ -14,6 +14,7 @@ namespace WebApplication.Web.DAL.AssingmentDAL
         private readonly string sql_GetAllTeachers = "SELECT * FROM users WHERE role = 'Teacher';";
         private readonly string sql_AssignStudent = "INSERT INTO teachers(teacher_id, student_id) VALUES (@teacherID, @studentID);";
         private readonly string sql_AssignScenario = "INSERT INTO students(student_id, scenario_id) VALUES (@studentID, @scenarioID);";
+        private readonly string sql_UnassignScenario = "DELETE FROM students WHERE student_id = @studentID AND scenario_id = @scenarioID;";
 
         public AssignmentDAL(string connectionString)
         {
@@ -125,7 +126,29 @@ namespace WebApplication.Web.DAL.AssingmentDAL
 
             return result;
         }
+        public bool UnassignScenario(int studentID, int scenarioID)
+        {
+            bool result = false;
+            int affected = 0;
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql_UnassignScenario, conn);
+                cmd.Parameters.AddWithValue("@studentID", studentID);
+                cmd.Parameters.AddWithValue("@scenarioID", scenarioID);
+
+
+                affected = cmd.ExecuteNonQuery();
+            }
+
+            if (affected >= 1)
+            {
+                result = true;
+            }
+
+            return result;
+        }
 
 
     }
