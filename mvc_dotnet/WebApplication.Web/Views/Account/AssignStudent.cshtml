@@ -7,7 +7,32 @@
 }
 
 <h2>Assign Student to Teacher</h2>
+<div class="form-group">
+    <label>Teacher Look Up</label>
+    <select asp-for="Id" name="teacher">
+        @foreach (var teacher in teachers)
+        {
+            <option>@teacher.Id @teacher.Username</option>
 
+        }
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Student Look Up</label>
+    <select asp-for="Id" name="student">
+        @foreach (var student in students)
+        {
+            <option>@student.Id @student.Username</option>
+
+        }
+    </select>
+</div>
+
+
+
+
+<h3>Assign</h3>
 
 <form asp-controller="account" asp-action="AssignStudentToTeacher" method="get">
     <div class="form-group">
@@ -15,7 +40,8 @@
         <select asp-for="Id" name="teacherId">
             @foreach (var teacher in teachers)
             {
-                <option>@teacher.Id @teacher.Username</option>
+                <option>@teacher.Id</option>
+
             }
         </select>
     </div>
@@ -25,7 +51,7 @@
         <select asp-for="Id" name="studentId">
             @foreach (var student in students)
             {
-                <option>@student.Id @student.Username</option>
+                <option>@student.Id</option>
             }
         </select>
     </div>

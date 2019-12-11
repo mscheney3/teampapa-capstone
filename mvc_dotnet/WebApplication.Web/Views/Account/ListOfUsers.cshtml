@@ -10,18 +10,15 @@
 
 <h4>List of Users:</h4>
 
+<select>
+    @foreach (User users in Model)
+    {
 
-@foreach (User users in Model)
-{
-    <tr>
-        <td>@users.Id</td>
-        <td>@users.Username</td>
-        <td>@users.Role</td>
-    </tr><br/>
+        <option>@users.Id: @users.Username - @users.Role </option>
 
-}
-
-<h6> Would you like to reset a user's password?</h6>
+    }
+</select>
+<h6> Would you like to reset a user's password or their role?</h6>
 
 <form asp-controller="account" asp-action="ResetUser" method="post">
     <div class="form-group">

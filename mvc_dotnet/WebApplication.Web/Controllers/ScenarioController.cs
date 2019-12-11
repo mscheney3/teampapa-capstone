@@ -25,6 +25,11 @@ namespace WebApplication.Web.Controllers
         public IActionResult Index()
         {
             User user = authProvider.GetCurrentUser();
+
+            if(user == null) {
+                return RedirectToAction("Error", "Account");
+            }
+
             List<Scenario> scenarios = scenarioDAL.GetAllUserScenarios(user.Id);
 
             return View(scenarios);
@@ -41,7 +46,7 @@ namespace WebApplication.Web.Controllers
             Answer response = scenarioDAL.GetResponse(id);
             return View(response);
         }
-
+        
         public IActionResult NextScenario(int id)
         {
             User user = authProvider.GetCurrentUser();

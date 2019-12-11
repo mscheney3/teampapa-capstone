@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication.Web</title>
+    <title>@ViewData["Title"]</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -16,30 +16,40 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar">T1</span>
+                    <span class="icon-bar">T2</span>
+                    <span class="icon-bar">T3</span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebApplication.Web</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Home Page</a>
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+
+                    
+                    <li><a asp-area="" asp-controller="Scenario" asp-action="Index">Scenarios</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="AssignStudent">Assign Student</a></li>
+                    <li><a asp-area="" asp-controller="Scenario" asp-action="AssignScenario">Assign Scenario</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="ChangePassword">Change Password</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="CreateUser">Create User</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="ListOfUsers">Reset User</a></li>
+
                 </ul>
-                
-                <ul class="nav navbar-nav navbar-right">
-                    @await  Component.InvokeAsync("NavBar") @* Render the NavBar component. *@
-                </ul>
+
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        @await Component.InvokeAsync("NavBar") @* Render the NavBar component. *@
+                    </ul>
+                </div>
             </div>
-        </div>
     </nav>
 
     <partial name="_CookieConsentPartial" />

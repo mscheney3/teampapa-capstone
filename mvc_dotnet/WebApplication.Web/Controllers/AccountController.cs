@@ -41,6 +41,12 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Error()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel loginViewModel)
@@ -53,7 +59,7 @@ namespace WebApplication.Web.Controllers
                 if (validLogin)
                 {
                     // Redirect the user where you want them to go after successful login
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Scenario");
                 }
             }
 
