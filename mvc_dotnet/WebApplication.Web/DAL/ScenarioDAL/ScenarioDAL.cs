@@ -168,7 +168,6 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 throw ex;
             }
 
-
             return answers;
         }
 
