@@ -71,10 +71,10 @@ constraint pk_answers primary key (answer_id)
 
 CREATE TABLE review
 (
-student_id int not null,
+user_id int not null,
 answer_id int not null
 
-CONSTRAINT pk_review primary key (student_id, answer_id)
+CONSTRAINT pk_review primary key (user_id, answer_id)
 )
 
 ALTER TABLE teachers
@@ -93,7 +93,7 @@ ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
  ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
 
  ALTER TABLE review
- ADD FOREIGN KEY (student_id) REFERENCES users(id);
+ ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
  ALTER TABLE review
  ADD FOREIGN KEY (answer_id) REFERENCES answers(answer_id);
