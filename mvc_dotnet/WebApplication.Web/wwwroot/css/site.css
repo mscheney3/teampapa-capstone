@@ -59,23 +59,34 @@ body {
         color: white;
     }
 
-.scenario-image {
-    width: 50%;
+.scenario-grid {
+    display: grid;
+    grid-template-areas: 'image question';
 }
+
+
+.scenario-image {
+    width: 75%;
+    grid-area: image;
+}
+
+.question-div {
+    grid-area: question;
+   }
 
 .page {
     margin-top: 150px;
 }
 
-    .flex-container > div {
-        width: 50%;
-        margin: 10px;
-        text-align: center;
-        line-height: 75px;
-        font-size: 30px;
-        justify-content: center;
-        align-items: center;
-    }
+.flex-container > div {
+    width: 50%;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
 
 #response-image {
     width: 80%;
@@ -92,12 +103,12 @@ dd {
 }
 
 
-body{
+body {
     background-color: lightgoldenrodyellow;
 }
 
 
-#student-answer{
+#student-answer {
     font-weight: bold;
 }
 
@@ -107,16 +118,16 @@ body{
     flex-wrap: nowrap;
 }
 
-.home-page{
+.home-page {
     text-align: center;
     margin-top: 5%;
 }
 
-#home-disc{
+#home-disc {
     font-size: large;
 }
 
-.home-spacing{
+.home-spacing {
     margin: 20px;
 }
 
@@ -124,14 +135,24 @@ body{
     background-color: cornflowerblue;
 }
 
-#mainnavbar a {
-    color: white;
+    #mainnavbar a {
+        color: white;
+    }
+
+#createuser{
+    text-align:center;
+    font-size: 20px;
+}
+
+#createuser h1{
+    font-size: 50px;
 }
 
 #home-logo{
     border-radius: 12%;
     width: 25%;
 }
+
 
 #nav-logo{
     height: 100%;

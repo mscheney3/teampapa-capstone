@@ -30,7 +30,8 @@ namespace WebApplication.Web.Controllers
             User user = authProvider.GetCurrentUser();
 
             if(user == null) {
-                return RedirectToAction("Error", "Account");
+
+            return RedirectToAction("Login", "Account");
             }
 
             List<Scenario> scenarios = scenarioDAL.GetAllUserScenarios(user.Id);
@@ -49,7 +50,7 @@ namespace WebApplication.Web.Controllers
             Answer response = scenarioDAL.GetResponse(id);
             return View(response);
         }
-        
+
         public IActionResult NextScenario(int id)
         {
             User user = authProvider.GetCurrentUser();
@@ -59,7 +60,7 @@ namespace WebApplication.Web.Controllers
             {
                 return RedirectToAction("Index", "Scenario");
             }
-            return RedirectToAction("scenario", new { id = nextScenario.Id});
+            return RedirectToAction("scenario", new { id = nextScenario.Id });
         }
 
         [HttpGet]
@@ -86,9 +87,14 @@ namespace WebApplication.Web.Controllers
             return RedirectToAction("AssignScenario", "Scenario");
         }
 
-        //public IActionResult Review(int userId)
-        //{
+        [HttpGet]
+        public IActionResult UnassignScenario(int studentId, int scenarioId)
+        {
 
-        //}
+
+            assignmentDAL.UnassignScenario(studentId, scenarioId);
+
+            return RedirectToAction("AssignScenario", "Scenario");
+        }
     }
 }

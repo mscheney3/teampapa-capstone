@@ -44,11 +44,6 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Error()
-        {
-            return View();
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -103,6 +98,13 @@ namespace WebApplication.Web.Controllers
         public IActionResult ResetUser(User user)
         {
 
+            User loggedIn = authProvider.GetCurrentUser();
+
+            if (loggedIn == null)
+            {
+                return RedirectToAction("Error", "Account");
+            }
+
             HashProvider hashProvider = new HashProvider();
 
             HashedPassword newPasscode = hashProvider.HashPassword(user.Password);
@@ -118,6 +120,14 @@ namespace WebApplication.Web.Controllers
         [AuthorizationFilter("Admin", "Teacher")]
         public IActionResult CreateUser(User user)
         {
+
+            User loggedIn = authProvider.GetCurrentUser();
+
+            if (loggedIn == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             User currentUser = authProvider.GetCurrentUser();
             TempData["User"] = currentUser;
 
@@ -149,6 +159,13 @@ namespace WebApplication.Web.Controllers
         public IActionResult ChangePassword()
         {
 
+            User loggedIn = authProvider.GetCurrentUser();
+
+            if (loggedIn == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View();
         }
 
@@ -178,6 +195,13 @@ namespace WebApplication.Web.Controllers
         [HttpGet]
         public IActionResult AssignStudent()
         {
+
+            User loggedIn = authProvider.GetCurrentUser();
+
+            if (loggedIn == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             User currentUser = authProvider.GetCurrentUser();
 
             IList<User> students = assignmentDAL.GetAllStudents();
