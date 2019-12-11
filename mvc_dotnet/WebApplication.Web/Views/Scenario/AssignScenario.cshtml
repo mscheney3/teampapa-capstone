@@ -11,9 +11,9 @@
     <label> Scenario Look up </label>
     <select asp-for="Id" name="scenarioId">
         @foreach (var scenario in scenarios)
-            {
-        <option>@scenario.Id @scenario.Name</option>
-            }
+        {
+            <option>@scenario.Id @scenario.Name</option>
+        }
     </select>
 </div>
 
@@ -21,9 +21,9 @@
     <label> Student Look up </label>
     <select asp-for="Id" name="studentId">
         @foreach (var student in students)
-            {
-        <option>@student.Id @student.Username</option>
-            }
+        {
+            <option>@student.Id @student.Username</option>
+        }
     </select>
 </div>
 
@@ -35,7 +35,7 @@
         <select asp-for="Id" name="studentId">
             @foreach (var student in students)
             {
-            <option> @student.Id </option>
+                <option> @student.Id </option>
             }
         </select>
     </div>
@@ -45,10 +45,35 @@
         <select asp-for="Id" name="scenarioId">
             @foreach (var scenario in scenarios)
             {
-            <option> @scenario.Id </option>
+                <option> @scenario.Id </option>
             }
         </select>
     </div>
     <input type="submit" value="Assign Scenario" class="btn btn-default" />
+</form>
+
+<h3> Unassign Scenario</h3>
+
+<form asp-controller="scenario" asp-action="UnassignScenario" method="get">
+    <div class="form-group">
+        <label>Student</label>
+        <select asp-for="Id" name="studentId">
+            @foreach (var student in students)
+            {
+                <option> @student.Id </option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Scenario</label>
+        <select asp-for="Id" name="scenarioId">
+            @foreach (var scenario in scenarios)
+            {
+                <option> @scenario.Id </option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Unassign Scenario" class="btn btn-default" />
 </form>
 
