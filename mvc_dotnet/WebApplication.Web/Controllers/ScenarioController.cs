@@ -58,7 +58,7 @@ namespace WebApplication.Web.Controllers
 
             if (nextScenario.Id == 0)
             {
-                return RedirectToAction("Index", "Scenario");
+                return RedirectToAction("Review", "Scenario");
             }
             return RedirectToAction("scenario", new { id = nextScenario.Id });
         }
@@ -90,11 +90,20 @@ namespace WebApplication.Web.Controllers
         [HttpGet]
         public IActionResult UnassignScenario(int studentId, int scenarioId)
         {
-
-
             assignmentDAL.UnassignScenario(studentId, scenarioId);
 
             return RedirectToAction("AssignScenario", "Scenario");
+        }
+
+        public IActionResult Review()
+        {
+            User currentUser = authProvider.GetCurrentUser();
+
+            List<Review> reviews = new List<Review>();
+
+            reviews = scenarioDAL.GetReview(currentUser.Id);
+
+            return View(reviews);
         }
     }
 }
