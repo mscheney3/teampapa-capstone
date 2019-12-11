@@ -8,7 +8,10 @@
     <div class="response">
         <dl id="response-text">
             <dd>
-                You answered "@Html.DisplayFor(model => model.AnswerText)"
+                You answered:
+            </dd>
+            <dd id="student-answer">
+                @Html.DisplayFor(model => model.AnswerText)
             </dd>
             <br />
             <dd>

@@ -96,6 +96,30 @@ body{
     background-color: lightgoldenrodyellow;
 }
 
+
+#student-answer{
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-size: x-large;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.home-page{
+    text-align: center;
+    margin-top: 5%;
+}
+
+#home-disc{
+    font-size: large;
+}
+
+.home-spacing{
+    margin: 20px;
+}
+
 #mainnavbar {
     background-color: cornflowerblue;
 }
@@ -104,4 +128,23 @@ body{
     color: white;
 }
 
+<<<<<<< HEAD
+#createuser{
+    text-align:center;
+    font-size: 20px;
+}
 
+#createuser h1{
+    font-size: 50px;
+}
+
+#home-logo{
+    border-radius: 12%;
+    width: 25%;
+}
+
+
+#nav-logo{
+    height: 100%;
+    margin-right: 8px;
+}

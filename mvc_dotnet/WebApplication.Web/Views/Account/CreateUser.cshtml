@@ -5,44 +5,46 @@
     User currentUser = TempData["User"] as User;
 }
 
-<h2>Create User</h2>
+<div id="createuser">
+    <h2>Create User</h2>
 
 
-<form asp-controller="account" asp-action="CreateUserForm" method="post">
+    <form asp-controller="account" asp-action="CreateUserForm" method="post">
 
-    <div class="form-group">
-        <label asp-for="Username"></label>
-        <input type="text" asp-for="Username" />
-        g
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input type="password" asp-for="Password" />
-
-    </div>
-    <div class="form-group">
-        <input type="hidden" asp-for="Salt" />
-    </div>
-
-    @if (currentUser.Role == "Admin")
-    {
         <div class="form-group">
-            <select asp-for="Role">
-                <Option> Admin </Option>
-                <Option> Teacher </Option>
-                <Option> Student </Option>
-            </select>
+            <label asp-for="Username"></label>
+            <input type="text" asp-for="Username" />
         </div>
-    }
-    else if (currentUser.Role == "Teacher")
-    {
         <div class="form-group">
-            <select asp-for="Role">
-                <Option> Teacher </Option>
-                <Option> Student </Option>
-            </select>
+            <label asp-for="Password"></label>
+            <input type="password" asp-for="Password" />
+
         </div>
-    }
+        <div class="form-group">
+            <input type="hidden" asp-for="Salt" />
+        </div>
+
+        @if (currentUser.Role == "Admin")
+        {
+            <div class="form-group">
+                <select asp-for="Role">
+                    <Option> Admin </Option>
+                    <Option> Teacher </Option>
+                    <Option> Student </Option>
+                </select>
+            </div>
+        }
+        else if (currentUser.Role == "Teacher")
+        {
+            <div class="form-group">
+                <select asp-for="Role">
+                    <Option> Teacher </Option>
+                    <Option> Student </Option>
+                </select>
+            </div>
+        }
 
 
-    <input type="submit" value="Create User" class="btn btn-default" />
-</form>
+        <input type="submit" value="Create User" class="btn btn-default" />
+    </form>
+</div>
