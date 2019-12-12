@@ -116,6 +116,7 @@ namespace WebApplication.Web.Controllers
         }
 
 
+
         public IActionResult TeacherReview(int studentId)
         {
 
@@ -131,6 +132,15 @@ namespace WebApplication.Web.Controllers
 
 
             return View(studentAnswers);
+
+        }
+
+        [AuthorizationFilter("Admin")]
+        public IActionResult UpdateScenarios()
+        {
+            List<Scenario> allScenarios = scenarioDAL.GetAllScenarios();
+            return View(allScenarios);
+
         }
     }
 }
