@@ -7,7 +7,8 @@ namespace WebApplication.Web.Models.Scenario
 {
     public class Review
     {
-        public string Name { get; set; }
+        public int StudentId { get; set; }
+        public string QuestionName { get; set; }
         public string Description { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }

@@ -29,10 +29,11 @@ namespace WebApplication.Web.Controllers
         {
             User user = authProvider.GetCurrentUser();
 
-
             if(user == null)
             {
                 return RedirectToAction("Login", "Account");
+
+
             }
     
             List<Scenario> scenarios = scenarioDAL.GetAllUserScenarios(user.Id);
@@ -114,11 +115,32 @@ namespace WebApplication.Web.Controllers
             return View(reviews);
         }
 
+
+
+        public IActionResult TeacherReview(int studentId)
+        {
+
+            List<Review> studentAnswers = new List<Review>();
+            studentAnswers = scenarioDAL.GetReview(studentId);
+
+            IList<User> allStudents = assignmentDAL.GetAllStudents();
+            TempData["students"] = allStudents;
+
+
+            User student = new User();
+            TempData["student"] = student;
+
+
+            return View(studentAnswers);
+
+        }
+
         [AuthorizationFilter("Admin")]
         public IActionResult UpdateScenarios()
         {
             List<Scenario> allScenarios = scenarioDAL.GetAllScenarios();
             return View(allScenarios);
+
         }
 
         [AuthorizationFilter("Admin")]
