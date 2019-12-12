@@ -20,11 +20,9 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         Scenario GetNextScenario(int studentId, int scenarioId);
 
-
-        Review saveReview(); 
-
-
         List<Review> GetReview(int userId);
+
+        bool SaveReview(int userId, int answerId);
 
     }
 }

@@ -16,9 +16,9 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetAllScenarios = "SELECT * FROM scenarios";
         private readonly string sql_GetScenarioAnswers = "SELECT * FROM answers WHERE scenario_id = @scenarioId";
         private readonly string sql_GetResponse = "SELECT * FROM answers WHERE answer_id = @answerId";
-        private readonly string sql_saveReview = "INSERT INTO review (user_id, answer_id) VALUES (@userId, @answerId)";
+        private readonly string sql_SaveReview = "INSERT INTO review (user_id, answer_id, date_answered) VALUES (@userId, @answerId, GETDATE())";
         private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
-            "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId";
+            "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId ORDER BY review.date_answered DESC";
 
         public ScenarioDAL(string connectionString)
         {
@@ -242,6 +242,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         review.Question = Convert.ToString(reader["question"]);
                         review.Answer = Convert.ToString(reader["answer_text"]);
                         review.Result = Convert.ToString(reader["response_text"]);
+                        review.Date = Convert.ToDateTime(reader["date_answered"]);
 
                         reviewScenarios.Add(review);
                     }
@@ -261,9 +262,12 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
 
 
-        public Review saveReview()
+
+
+        public bool SaveReview(int userId, int answerId)
         {
-            Review review = new Review();
+            bool isSaved = false;
+            int rowAdded = 0;
 
 
             try
@@ -272,22 +276,27 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand(sql_saveReview, conn);
+                    SqlCommand cmd = new SqlCommand(sql_SaveReview, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@answerId", answerId);
 
-                    //cmd.Parameters.AddWithValue("@userId", review.userId);
-                    //cmd.Parameters.AddWithValue("@answerId", review.answerId);
+                    rowAdded = cmd.ExecuteNonQuery();
 
-                    cmd.ExecuteNonQuery();
+                    if (rowAdded > 0)
+                    {
+                        isSaved = true;
+                    }
                 }
             }
             catch (SqlException ex)
             {
                 throw ex;
             }
-
-            return review;
+        
+            return isSaved;
 
         }
+
     }
 }
 

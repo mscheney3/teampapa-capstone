@@ -29,7 +29,8 @@ namespace WebApplication.Web.Controllers
         {
             User user = authProvider.GetCurrentUser();
 
-            if(user == null) {
+            if(user == null)
+            {
                 return RedirectToAction("Login", "Account");
 
 
@@ -48,8 +49,13 @@ namespace WebApplication.Web.Controllers
 
         public IActionResult Response(int id)
         {
+            User user = authProvider.GetCurrentUser();
+
+            bool isSaved = scenarioDAL.SaveReview(user.Id, id);
+
             Answer response = scenarioDAL.GetResponse(id);
             return View(response);
+
         }
 
         public IActionResult NextScenario(int id)
@@ -110,14 +116,19 @@ namespace WebApplication.Web.Controllers
         }
 
 
-        public IActionResult TeacherReview()
+        public IActionResult TeacherReview(int studentId)
         {
 
-            User studentId = new User();
             List<Review> studentAnswers = new List<Review>();
-            studentAnswers = scenarioDAL.GetReview(studentId.Id);
+            studentAnswers = scenarioDAL.GetReview(studentId);
 
-            TempData["Reviews"] = studentAnswers;
+            IList<User> allStudents = assignmentDAL.GetAllStudents();
+            TempData["students"] = allStudents;
+
+
+            User student = new User();
+            TempData["student"] = student;
+
 
             return View(studentAnswers);
         }
