@@ -101,7 +101,7 @@ ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
 
 INSERT INTO scenarios (scenario_name, description, scenario_image, question) VALUES ('Classroom', 'Your teacher asks you to read aloud', 'classroomscenario.png', 'Would you like to read?');
 INSERT INTO scenarios (scenario_name, description, scenario_image, question) VALUES ('Hallway', 'You want to place your books in your locker. However, your neighbor is blocking your locker.', 'hallwayscenario.png', 'Do you:');
-INSERT INTO scenarios (scenario_name, description, scenario_image, question) VALUES ('Soccer', 'You need to choose your next move.', 'outdoorscenario.png', 'Do you:');
+INSERT INTO scenarios (scenario_name, description, scenario_image, question) VALUES ('Soccer', 'You need to choose your next move.', 'soccerstealball.png', 'Do you:');
 
 INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'A) Sure', 'Good job!', 'classroomsure.png');
 INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'B) No', 'People will support you if you try.', 'classroomno.png');
