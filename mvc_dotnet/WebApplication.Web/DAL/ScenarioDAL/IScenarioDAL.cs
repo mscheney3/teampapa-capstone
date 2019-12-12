@@ -26,7 +26,5 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         bool UpdateScenario(int id, bool isActive);
 
-        bool ToggleActive(bool isActive);
-
     }
 }
