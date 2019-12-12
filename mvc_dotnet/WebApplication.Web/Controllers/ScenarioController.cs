@@ -108,5 +108,18 @@ namespace WebApplication.Web.Controllers
 
             return View(reviews);
         }
+
+
+        public IActionResult TeacherReview()
+        {
+
+            User studentId = new User();
+            List<Review> studentAnswers = new List<Review>();
+            studentAnswers = scenarioDAL.GetReview(studentId.Id);
+
+            TempData["Reviews"] = studentAnswers;
+
+            return View(studentAnswers);
+        }
     }
 }

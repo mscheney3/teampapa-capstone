@@ -16,9 +16,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetAllScenarios = "SELECT * FROM scenarios";
         private readonly string sql_GetScenarioAnswers = "SELECT * FROM answers WHERE scenario_id = @scenarioId";
         private readonly string sql_GetResponse = "SELECT * FROM answers WHERE answer_id = @answerId";
-
         private readonly string sql_saveReview = "INSERT INTO review (user_id, answer_id) VALUES (@userId, @answerId)";
-
         private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
             "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId";
 
@@ -233,8 +231,6 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     SqlCommand cmd = new SqlCommand(sql_GetReview, conn);
                     cmd.Parameters.AddWithValue("@userId", userId);
 
-
-
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -263,17 +259,23 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
 
 
+
+
         public Review saveReview()
         {
             Review review = new Review();
+
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
+
                     SqlCommand cmd = new SqlCommand(sql_saveReview, conn);
-                    cmd.Parameters.AddWithValue("@userId", review.userId);
-                    cmd.Parameters.AddWithValue("@answerId", review.answerId);
+
+                    //cmd.Parameters.AddWithValue("@userId", review.userId);
+                    //cmd.Parameters.AddWithValue("@answerId", review.answerId);
 
                     cmd.ExecuteNonQuery();
                 }
