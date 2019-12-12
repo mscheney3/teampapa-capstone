@@ -13,5 +13,6 @@ namespace WebApplication.Web.Models.Scenario
         public string Description { get; set; }
         public string Question { get; set; }
         public List<Answer> AnswerList { get; set; }
+        public bool IsActive { get; set; }
     }
 }

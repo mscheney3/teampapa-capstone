@@ -113,5 +113,12 @@ namespace WebApplication.Web.Controllers
 
             return View(reviews);
         }
+
+        [AuthorizationFilter("Admin")]
+        public IActionResult UpdateScenarios()
+        {
+            List<Scenario> allScenarios = scenarioDAL.GetAllScenarios();
+            return View(allScenarios);
+        }
     }
 }
