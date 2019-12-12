@@ -34,15 +34,18 @@
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
-                    <li><a asp-area="" asp-controller="Scenario" asp-action="Index">Scenarios</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="AssignStudent">Assign Student</a></li>
-                    <li><a asp-area="" asp-controller="Scenario" asp-action="AssignScenario">Assign Scenario</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="ChangePassword">Change Password</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="CreateUser">Create User</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="ListOfUsers">Reset User</a></li>
-                    <li><a asp-area="" asp-controller="Scenario" asp-action="TeacherReview">Review Student Assignments</a></li>
-
+                    <li><a asp-area="" asp-controller="Scenario" asp-action="Index">Scenario Assignments</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">What would you like to do?</a>
+                        <div class="dropdown-content">
+                            <a asp-area="" asp-controller="Account" asp-action="AssignStudent">Assign Student</a>
+                            <a asp-area="" asp-controller="Scenario" asp-action="AssignScenario">Assign Scenario</a>
+                            <a asp-area="" asp-controller="Account" asp-action="ChangePassword">Change Password</a>
+                            <a asp-area="" asp-controller="Account" asp-action="CreateUser">Create User</a>
+                            <a asp-area="" asp-controller="Account" asp-action="ListOfUsers">Reset User</a>
+                            <a asp-area="" asp-controller="Scenario" asp-action="TeacherReview">Review Student Assignments</a>
+                        </div>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
