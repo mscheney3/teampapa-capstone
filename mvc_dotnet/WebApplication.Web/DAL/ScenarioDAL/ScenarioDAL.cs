@@ -16,12 +16,9 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetAllScenarios = "SELECT * FROM scenarios";
         private readonly string sql_GetScenarioAnswers = "SELECT * FROM answers WHERE scenario_id = @scenarioId";
         private readonly string sql_GetResponse = "SELECT * FROM answers WHERE answer_id = @answerId";
-<<<<<<< HEAD
-        private readonly string sql_saveReview = "INSERT INTO review (user_id, answer_id) VALUES (@userId, @answerId)";
-=======
+        private readonly string sql_SaveReview = "INSERT INTO review (user_id, answer_id) VALUES (@userId, @answerId)";
         private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
             "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId";
->>>>>>> a1296c5324d547b6cccc41c653fd60c0f91ee965
 
         public ScenarioDAL(string connectionString)
         {
@@ -67,7 +64,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 scenarios = GetAllScenarios();
             }
-            
+
             return scenarios;
         }
 
@@ -210,7 +207,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 if (userScenarios[i].Id == scenarioId)
                 {
-                    if ((i+1)<userScenarios.Count)
+                    if ((i + 1) < userScenarios.Count)
                     {
                         nextScenario = userScenarios[i + 1];
                         break;
@@ -234,31 +231,6 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     SqlCommand cmd = new SqlCommand(sql_GetReview, conn);
                     cmd.Parameters.AddWithValue("@userId", userId);
 
-<<<<<<< HEAD
-
-        }
-        public Review saveReview()
-        {
-            Review review = new Review();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sql_saveReview, conn);
-                    cmd.Parameters.AddWithValue("@userId", review.userId);
-                    cmd.Parameters.AddWithValue("@answerId", review.answerId);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-
-            return review;
-=======
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -281,8 +253,32 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 throw ex;
             }
             return reviewScenarios;
->>>>>>> a1296c5324d547b6cccc41c653fd60c0f91ee965
+
         }
 
+        public Review saveReview()
+        {
+            Review review = new Review();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_SaveReview, conn);
+                    cmd.Parameters.AddWithValue("@userId", review.userId);
+                    cmd.Parameters.AddWithValue("@answerId", review.answerId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return review;
+
+        }
     }
 }
