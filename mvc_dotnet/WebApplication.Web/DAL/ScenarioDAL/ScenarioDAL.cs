@@ -49,7 +49,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
                         scenario.Question = Convert.ToString(reader["question"]);
-                        scenario.AnswerList = GetScenarioAnswers(scenario.Id);
+                        //scenario.AnswerList = GetScenarioAnswers(scenario.Id);
                         scenario.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                         scenarios.Add(scenario);
@@ -129,7 +129,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
                         scenario.Question = Convert.ToString(reader["question"]);
-                        scenario.AnswerList = GetScenarioAnswers(scenario.Id);
+                        //scenario.AnswerList = GetScenarioAnswers(scenario.Id);
                         scenario.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                         scenarios.Add(scenario);
