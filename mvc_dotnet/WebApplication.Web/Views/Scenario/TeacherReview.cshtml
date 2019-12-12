@@ -26,16 +26,18 @@
     <input type="submit" value="Student LookUp" class="btn btn-default" />
 </form>
 
-<h2>@Html.DisplayForModel(student.Id)</h2>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Date
+            </th>
+            <th>
+                Scenario
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Question)
@@ -54,10 +56,13 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.QuestionName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
