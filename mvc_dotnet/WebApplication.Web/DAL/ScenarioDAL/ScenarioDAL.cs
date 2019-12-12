@@ -19,7 +19,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_SaveReview = "INSERT INTO review (user_id, answer_id, date_answered) VALUES (@userId, @answerId, GETDATE())";
         private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
             "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId ORDER BY review.date_answered DESC";
-        private readonly string sql_UpdateScenario = "Update scenarios SET isActive = @isActive WHERE scenario_id = @scenario_id";
+        private readonly string sql_UpdateScenario = "Update scenarios SET isActive = @isActive WHERE scenario_id = @scenarioId";
 
         public ScenarioDAL(string connectionString)
         {
@@ -91,6 +91,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
                         scenario.Question = Convert.ToString(reader["question"]);
+                        scenario.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                     }
                 }
@@ -299,7 +300,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         }
 
 
-        public bool UpdateScenario(Scenario scenario)
+        public bool UpdateScenario(int id, bool isActive)
         {
             bool isSaved = false;
             int rowAdded = 0;
@@ -310,8 +311,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql_UpdateScenario, conn);
-                    cmd.Parameters.AddWithValue("@isActive", scenario.IsActive);
-                    cmd.Parameters.AddWithValue("@scenarioId", scenario.Id);
+                    cmd.Parameters.AddWithValue("@isActive", isActive);
+                    cmd.Parameters.AddWithValue("@scenarioId", id);
                     
                     rowAdded = cmd.ExecuteNonQuery();
 
