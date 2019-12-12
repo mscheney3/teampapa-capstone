@@ -29,13 +29,9 @@ namespace WebApplication.Web.Controllers
         {
             User user = authProvider.GetCurrentUser();
 
-<<<<<<< HEAD
 
-            if(user == null) {
-=======
             if(user == null)
             {
->>>>>>> 0e34f0c9338146e53dacb2063eca8009181624b7
                 return RedirectToAction("Login", "Account");
             }
     
@@ -52,8 +48,13 @@ namespace WebApplication.Web.Controllers
 
         public IActionResult Response(int id)
         {
+            User user = authProvider.GetCurrentUser();
+
+            bool isSaved = scenarioDAL.SaveReview(user.Id, id);
+
             Answer response = scenarioDAL.GetResponse(id);
             return View(response);
+
         }
 
         public IActionResult NextScenario(int id)
