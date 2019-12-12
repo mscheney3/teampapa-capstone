@@ -53,11 +53,11 @@ body {
     color: white;
 }
 
-    .answer:hover {
-        background-color: green;
-        text-decoration: none !important;
-        color: white;
-    }
+.answer:hover {
+    background-color: green;
+    text-decoration: none !important;
+    color: white;
+}
 
 .scenario-grid {
     display: grid;
@@ -173,17 +173,17 @@ li {
     float: left;
 }
 
-    li a, .dropbtn {
-        display: inline-block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+li a, .dropbtn {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
-    li.dropdown {
-        display: inline-block;
-    }
+li.dropdown {
+    display: inline-block;
+}
 
 .dropdown-content {
     display: none;
@@ -194,17 +194,17 @@ li {
     z-index: 1;
 }
 
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
 
-        .dropdown-content a:hover {
-            background-color: cornflowerblue;
-        }
+.dropdown-content a:hover {
+    background-color: cornflowerblue;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -213,4 +213,8 @@ li {
 .navbar-collapse.in {
     display: flex;
     align-items: center;
+}
+
+.navbar-collapse.in {
+    overflow-y: visible;
 }
