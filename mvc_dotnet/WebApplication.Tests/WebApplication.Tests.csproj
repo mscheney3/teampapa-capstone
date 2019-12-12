@@ -30,6 +30,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="DAL\ScenarioSQLDALTests.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="DAL\UserSQLDALTests.cs">
       <SubType>Component</SubType>
     </Compile>
