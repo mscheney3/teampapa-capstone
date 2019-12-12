@@ -13,7 +13,11 @@
         <select asp-for="Id" name="scenarioId">
             @foreach (var scenario in scenarios)
             {
-                <option>@scenario.Id @scenario.Name</option>
+                if (scenario.IsActive == true)
+                {
+                    <option>@scenario.Id @scenario.Name</option>
+                }
+
             }
         </select>
     </div>
@@ -46,7 +50,10 @@
             <select asp-for="Id" name="scenarioId">
                 @foreach (var scenario in scenarios)
                 {
-                    <option> @scenario.Id </option>
+                    if (scenario.IsActive == true)
+                    {
+                        <option>@scenario.Id @scenario.Name</option>
+                    }
                 }
             </select>
         </div>

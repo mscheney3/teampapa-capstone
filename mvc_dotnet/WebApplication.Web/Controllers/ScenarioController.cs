@@ -142,5 +142,22 @@ namespace WebApplication.Web.Controllers
             return View(allScenarios);
 
         }
+
+        [AuthorizationFilter("Admin")]
+        public IActionResult Edit(int id)
+        {
+            Scenario scenario = scenarioDAL.GetUserScenario(id);
+            return View(scenario);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, bool isActive)
+        {
+
+            bool success = scenarioDAL.UpdateScenario(id, isActive);
+
+            return RedirectToAction("UpdateScenarios");
+        }
+
     }
 }
