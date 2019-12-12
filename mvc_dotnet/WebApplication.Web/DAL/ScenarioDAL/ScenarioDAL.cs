@@ -241,8 +241,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     {
                         Review review = new Review();
 
-                        review.StudentId = Convert.ToInt32(reader["user_Id"]);
-                        review.QuestionName = Convert.ToString(reader["scenario_name"]);
+                        review.Name = Convert.ToString(reader["scenario_name"]);
                         review.Description = Convert.ToString(reader["description"]);
                         review.Question = Convert.ToString(reader["question"]);
                         review.Answer = Convert.ToString(reader["answer_text"]);
@@ -262,25 +261,16 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         }
 
-
-
-
-
-
-
-
         public bool SaveReview(int userId, int answerId)
         {
             bool isSaved = false;
             int rowAdded = 0;
-
 
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-
                     SqlCommand cmd = new SqlCommand(sql_SaveReview, conn);
                     cmd.Parameters.AddWithValue("@userId", userId);
                     cmd.Parameters.AddWithValue("@answerId", answerId);
@@ -343,4 +333,3 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
     }
 }
-
