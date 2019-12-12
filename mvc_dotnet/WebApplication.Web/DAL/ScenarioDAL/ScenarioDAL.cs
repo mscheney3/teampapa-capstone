@@ -18,7 +18,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetResponse = "SELECT * FROM answers WHERE answer_id = @answerId";
         private readonly string sql_SaveReview = "INSERT INTO review (user_id, answer_id, date_answered) VALUES (@userId, @answerId, GETDATE())";
         private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
-            "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId";
+            "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId ORDER BY review.date_answered DESC";
 
         public ScenarioDAL(string connectionString)
         {
