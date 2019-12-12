@@ -210,6 +210,7 @@ li.dropdown {
     display: block;
 }
 
+
 .navbar-collapse.in {
     display: flex;
     align-items: center;
@@ -218,3 +219,4 @@ li.dropdown {
 .navbar-collapse.in {
     overflow-y: visible;
 }
+
