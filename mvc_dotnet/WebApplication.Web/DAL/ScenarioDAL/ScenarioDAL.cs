@@ -16,6 +16,9 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetAllScenarios = "SELECT * FROM scenarios";
         private readonly string sql_GetScenarioAnswers = "SELECT * FROM answers WHERE scenario_id = @scenarioId";
         private readonly string sql_GetResponse = "SELECT * FROM answers WHERE answer_id = @answerId";
+        private readonly string sql_SaveReview = "INSERT INTO review (user_id, answer_id) VALUES (@userId, @answerId)";
+        private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
+            "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId";
 
         public ScenarioDAL(string connectionString)
         {
@@ -90,6 +93,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     }
                 }
             }
+
             catch (Exception ex)
             {
                 throw ex;
@@ -133,7 +137,6 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 throw ex;
             }
-
             return scenarios;
         }
 
@@ -167,7 +170,6 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 throw ex;
             }
-
             return answers;
         }
 
@@ -198,7 +200,6 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         public Scenario GetNextScenario(int studentId, int scenarioId)
         {
             Scenario nextScenario = new Scenario();
-            //Scenario currentScenario = GetUserScenario(scenarioId);
 
             List<Scenario> userScenarios = GetAllUserScenarios(studentId);
 
@@ -206,7 +207,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 if (userScenarios[i].Id == scenarioId)
                 {
-                    if ((i+1)<userScenarios.Count)
+                    if ((i + 1) < userScenarios.Count)
                     {
                         nextScenario = userScenarios[i + 1];
                         break;
@@ -215,15 +216,68 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     break;
                 }
             }
-
             return nextScenario;
+        }
 
-            //int currentIndex = userScenarios.IndexOf(currentScenario);
-            //currently fails because Answer list is null in the list
-            //if (userScenarios.Count > (currentIndex + 1))
-                //{
-                //    nextScenario = userScenarios[currentIndex + 1];
-                //}
+        public List<Review> GetReview(int userId)
+        {
+            List<Review> reviewScenarios = new List<Review>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_GetReview, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Review review = new Review();
+
+                        review.Name = Convert.ToString(reader["scenario_name"]);
+                        review.Description = Convert.ToString(reader["description"]);
+                        review.Question = Convert.ToString(reader["question"]);
+                        review.Answer = Convert.ToString(reader["answer_text"]);
+                        review.Result = Convert.ToString(reader["response_text"]);
+
+                        reviewScenarios.Add(review);
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return reviewScenarios;
+
+        }
+
+        public Review saveReview()
+        {
+            Review review = new Review();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_SaveReview, conn);
+                    cmd.Parameters.AddWithValue("@userId", review.userId);
+                    cmd.Parameters.AddWithValue("@answerId", review.answerId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return review;
 
         }
 

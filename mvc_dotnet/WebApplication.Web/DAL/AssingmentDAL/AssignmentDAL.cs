@@ -83,23 +83,28 @@ namespace WebApplication.Web.DAL.AssingmentDAL
         {
             bool result = false;
             int affected = 0;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql_AssignStudent, conn);
-                cmd.Parameters.AddWithValue("@teacherID", teacherID);
-                cmd.Parameters.AddWithValue("@studentID", studentID);
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_AssignStudent, conn);
+                    cmd.Parameters.AddWithValue("@teacherID", teacherID);
+                    cmd.Parameters.AddWithValue("@studentID", studentID);
 
 
-                affected = cmd.ExecuteNonQuery();
+                    affected = cmd.ExecuteNonQuery();
+                }
+
+                if (affected >= 1)
+                {
+                    result = true;
+                }
             }
-
-            if (affected >= 1)
+            catch (Exception ex)
             {
-                result = true;
+                
             }
-
             return result;
         }
 
@@ -107,49 +112,57 @@ namespace WebApplication.Web.DAL.AssingmentDAL
         {
             bool result = false;
             int affected = 0;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql_AssignScenario, conn);
-                cmd.Parameters.AddWithValue("@studentID", studentID);
-                cmd.Parameters.AddWithValue("@scenarioID", scenarioID);
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_AssignScenario, conn);
+                    cmd.Parameters.AddWithValue("@studentID", studentID);
+                    cmd.Parameters.AddWithValue("@scenarioID", scenarioID);
 
 
-                affected = cmd.ExecuteNonQuery();
+                    affected = cmd.ExecuteNonQuery();
+                }
+                if (affected >= 1)
+                {
+                    result = true;
+                }
             }
-
-            if (affected >= 1)
+            catch (Exception ex)
             {
-                result = true;
+                
             }
-
             return result;
         }
+
         public bool UnassignScenario(int studentID, int scenarioID)
         {
             bool result = false;
             int affected = 0;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql_UnassignScenario, conn);
-                cmd.Parameters.AddWithValue("@studentID", studentID);
-                cmd.Parameters.AddWithValue("@scenarioID", scenarioID);
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_UnassignScenario, conn);
+                    cmd.Parameters.AddWithValue("@studentID", studentID);
+                    cmd.Parameters.AddWithValue("@scenarioID", scenarioID);
 
 
-                affected = cmd.ExecuteNonQuery();
+                    affected = cmd.ExecuteNonQuery();
+                }
+
+                if (affected >= 1)
+                {
+                    result = true;
+                }
             }
-
-            if (affected >= 1)
+            catch (Exception ex)
             {
-                result = true;
+                
             }
-
             return result;
         }
-
-
     }
 }
