@@ -135,9 +135,9 @@ body {
     background-color: cornflowerblue;
 }
 
-    #mainnavbar a {
-        color: white;
-    }
+#mainnavbar a {
+    color: white;
+}
 
 .body-styling {
     text-align: center;
@@ -219,4 +219,20 @@ li.dropdown {
 .navbar-collapse.in {
     overflow-y: visible;
 }
+
+#begin-assignment {
+    font-weight: bold;
+    background-color: lightgoldenrodyellow;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#begin-assignment:hover {
+    background-color: cornflowerblue;
+    text-decoration: none;
+    color: white;
+}
+
 

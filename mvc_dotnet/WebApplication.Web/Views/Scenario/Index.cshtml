@@ -34,9 +34,8 @@
                         @item.Description
                     </td>
                     <td>
-                        @Html.ActionLink("Start Assignment", "scenario", new { id = item.Id })
+                        <button id="begin-assignment">@Html.ActionLink("Start Assignment", "scenario", new { id = item.Id })</button>
                     </td>
-
                 </tr>
             }
 
