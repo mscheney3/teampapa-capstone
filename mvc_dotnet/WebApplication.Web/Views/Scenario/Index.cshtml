@@ -34,7 +34,7 @@
                         @item.Description
                     </td>
                     <td>
-                        <button id="begin-assignment">@Html.ActionLink("Start Assignment", "scenario", new { id = item.Id })</button>
+                        <a id="begin-assignment" asp-action="Scenario" asp-controller="Scenario" asp-route-id="@item.Id">Start Assignment</a>
                     </td>
                 </tr>
             }
