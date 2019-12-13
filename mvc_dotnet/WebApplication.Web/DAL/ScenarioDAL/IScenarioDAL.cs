@@ -26,5 +26,11 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         bool UpdateScenario(int id, bool isActive);
 
+        bool CreateScenario(string scenarioName, string description, string image, string question, int isActive);
+
+        bool CreateAnswer(int id, string answerText, string responseText, string responseImage);
+
+        int GetMaxScenarioId();
+
     }
 }

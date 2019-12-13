@@ -1,0 +1,46 @@
+﻿@model WebApplication.Web.Models.Scenario.Answer
+
+@{
+    ViewData["Title"] = "CreateAnswer";
+    int maxId = (int)TempData["maxScenario"];
+}
+
+<h2>CreateAnswer</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAnswer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="@maxId" type="hidden" class="form-control" />
+                <span asp-validation-for="ScenarioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnswerText" class="control-label"></label>
+                <input asp-for="AnswerText" class="form-control" />
+                <span asp-validation-for="AnswerText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResponseText" class="control-label"></label>
+                <input asp-for="ResponseText" class="form-control" />
+                <span asp-validation-for="ResponseText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResponseImage" class="control-label"></label>
+                <input asp-for="ResponseImage" class="form-control" />
+                <span asp-validation-for="ResponseImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+        <form asp-action="Index">
+            <input type="submit" value="Finalize Scenario" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

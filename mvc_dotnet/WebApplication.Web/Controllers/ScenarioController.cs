@@ -92,8 +92,7 @@ namespace WebApplication.Web.Controllers
 
            assignmentDAL.AssignScenario(studentId, scenarioId);          
                 
-           return RedirectToAction("AssignScenario", "Scenario");
-         
+           return RedirectToAction("AssignScenario", "Scenario");  
         }
 
         [HttpGet]
@@ -115,8 +114,6 @@ namespace WebApplication.Web.Controllers
             return View(reviews);
         }
 
-
-
         public IActionResult TeacherReview(int studentId)
         {
 
@@ -129,7 +126,6 @@ namespace WebApplication.Web.Controllers
 
             User student = new User();
             TempData["student"] = student;
-
 
             return View(studentAnswers);
 
@@ -153,10 +149,42 @@ namespace WebApplication.Web.Controllers
         [HttpPost]
         public IActionResult Edit(int id, bool isActive)
         {
-
             bool success = scenarioDAL.UpdateScenario(id, isActive);
 
             return RedirectToAction("UpdateScenarios");
+        }
+
+        [HttpGet]
+        [AuthorizationFilter("Admin")]
+        public IActionResult CreateScenario()
+        {
+            return View();
+        }
+
+        [AuthorizationFilter("Admin")]
+        public IActionResult CreateScenario(string name, string description, string imageName, string question, int isActive)
+        {
+            bool success = scenarioDAL.CreateScenario(name, description, imageName, question, isActive);
+
+            return RedirectToAction("CreateAnswer");
+        }
+
+        [HttpGet]
+        [AuthorizationFilter("Admin")]
+        public IActionResult CreateAnswer()
+        {
+            int maxScenario = scenarioDAL.GetMaxScenarioId();
+            TempData["maxScenario"] = maxScenario;
+
+            return View();
+        }
+
+        [AuthorizationFilter("Admin")]
+        public IActionResult CreateAnswer(int scenarioId, string answerText, string responseText, string responseImage)
+        {
+            bool success = scenarioDAL.CreateAnswer(scenarioId, answerText, responseText, responseImage);
+
+            return RedirectToAction("CreateAnswer");
         }
 
     }
