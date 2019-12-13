@@ -20,7 +20,7 @@
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ImageName)
+                    Scenario Image
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Description)
@@ -29,7 +29,7 @@
                     @Html.DisplayNameFor(model => model.Question)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
+                    Active?
                 </th>
                 <th></th>
             </tr>
@@ -45,7 +45,7 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ImageName)
+                        <img style="width:40%" src="@item.ImageName" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)

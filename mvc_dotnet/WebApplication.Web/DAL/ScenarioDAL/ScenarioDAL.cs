@@ -20,6 +20,11 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
             "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId ORDER BY review.date_answered DESC";
         private readonly string sql_UpdateScenario = "Update scenarios SET isActive = @isActive WHERE scenario_id = @scenarioId";
+        private readonly string sql_CreateScenario = "INSERT INTO scenarios (scenario_name, description, scenario_image, question, isActive) " +
+            "VALUES (@scenarioName, @description, @image, @question, @isActive)";
+        private readonly string sql_CreateAnswer = "INSERT INTO answers (scenario_id, answer_text, response_text, response_image) " +
+            "VALUES (@scenarioId, @answerText, @responseText, @responseImage)";
+        private readonly string sql_GetMaxScenarioId = "SELECT * FROM scenarios WHERE scenario_id = (SELECT MAX(scenario_id) FROM scenarios)";
 
         public ScenarioDAL(string connectionString)
         {
@@ -49,7 +54,6 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         scenario.Description = Convert.ToString(reader["description"]);
                         scenario.ImageName = Convert.ToString(reader["scenario_image"]);
                         scenario.Question = Convert.ToString(reader["question"]);
-                        //scenario.AnswerList = GetScenarioAnswers(scenario.Id);
                         scenario.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                         scenarios.Add(scenario);
@@ -324,5 +328,94 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         }
 
+        public bool CreateScenario(string name, string description, string imageName, string question, int isActive)
+        {
+            bool isSaved = false;
+            isActive = 1;
+            int rowAdded = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_CreateScenario, conn);
+                    cmd.Parameters.AddWithValue("@scenarioName", name);
+                    cmd.Parameters.AddWithValue("@description", description);
+                    cmd.Parameters.AddWithValue("@image", imageName);
+                    cmd.Parameters.AddWithValue("@question", question);
+                    cmd.Parameters.AddWithValue("@isActive", isActive);
+
+                    rowAdded = cmd.ExecuteNonQuery();
+
+                    if (rowAdded > 0)
+                    {
+                        isSaved = true;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return isSaved;
+        }
+
+        public bool CreateAnswer(int id, string answerText, string responseText, string responseImage)
+        {
+            bool isSaved = false;
+            int rowAdded = 0;
+            id = GetMaxScenarioId();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_CreateAnswer, conn);
+                    cmd.Parameters.AddWithValue("@scenarioId", id);
+                    cmd.Parameters.AddWithValue("@answerText", answerText);
+                    cmd.Parameters.AddWithValue("@responseText", responseText);
+                    cmd.Parameters.AddWithValue("@responseImage", responseImage);
+
+                    rowAdded = cmd.ExecuteNonQuery();
+
+                    if (rowAdded > 0)
+                    {
+                        isSaved = true;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return isSaved;
+        }
+
+        public int GetMaxScenarioId()
+        {
+            int gotMax = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_GetMaxScenarioId, conn);
+
+                    gotMax = (int)cmd.ExecuteScalar();
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return gotMax;
+        }
     }
 }

@@ -223,6 +223,7 @@ li.dropdown {
 #begin-assignment {
     font-weight: bold;
     background-color: lightgoldenrodyellow;
+    color: cornflowerblue;
     border: none;
     text-align: center;
     text-decoration: none;
@@ -233,6 +234,7 @@ li.dropdown {
     background-color: cornflowerblue;
     text-decoration: none;
     color: white;
+    padding: 1px;
 }
 
 
