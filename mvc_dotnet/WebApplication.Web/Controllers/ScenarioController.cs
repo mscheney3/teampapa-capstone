@@ -161,11 +161,11 @@ namespace WebApplication.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, bool isActive)
+        public IActionResult Edit(int id, string name, string description, string imageName, string question, bool isActive)
         {
-            bool success = scenarioDAL.UpdateScenario(id, isActive);
+            bool success = scenarioDAL.UpdateScenario(id, name, description, imageName, question, isActive);
 
-            return RedirectToAction("UpdateScenarios");
+            return RedirectToAction("EditAnswer", "Scenario");
         }
 
         [HttpGet]

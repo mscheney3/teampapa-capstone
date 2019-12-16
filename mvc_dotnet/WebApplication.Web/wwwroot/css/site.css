@@ -97,11 +97,15 @@ dd {
 
 .navigation {
     font: bold 20px arial, verdana;
+}
+
+.response-nav {
+    font: bold 20px arial, verdana;
     display: flex;
     flex-wrap: nowrap;
 }
 
-.navigation > a {
+.response-nav > a {
     margin-left: 15px;
 }
 
