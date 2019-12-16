@@ -169,7 +169,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         answer.AnswerText = Convert.ToString(reader["answer_text"]);
                         answer.ResponseImage = Convert.ToString(reader["response_image"]);
                         answer.ResponseText = Convert.ToString(reader["response_text"]);
-
+                        
                         answers.Add(answer);
                     }
                 }
@@ -200,6 +200,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     answer.ResponseImage = Convert.ToString(reader["response_image"]);
                     answer.ResponseText = Convert.ToString(reader["response_text"]);
                     answer.ScenarioId = Convert.ToInt32(reader["scenario_id"]);
+                    answer.Color = Convert.ToString(reader["response_color"]);
+                    answer.Emoji = Convert.ToString(reader["emoji"]);
                 }
             }
             return answer;
