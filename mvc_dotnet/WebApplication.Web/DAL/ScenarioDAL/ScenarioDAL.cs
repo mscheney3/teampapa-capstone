@@ -19,7 +19,9 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_SaveReview = "INSERT INTO review (user_id, answer_id, date_answered) VALUES (@userId, @answerId, GETDATE())";
         private readonly string sql_GetReview = "SELECT * FROM review JOIN answers ON review.answer_id = answers.answer_id " +
             "JOIN scenarios ON scenarios.scenario_id = answers.scenario_id WHERE user_id = @userId ORDER BY review.date_answered DESC";
-        private readonly string sql_UpdateScenario = "Update scenarios SET isActive = @isActive WHERE scenario_id = @scenarioId";
+        private readonly string sql_UpdateScenario = "Update scenarios SET scenario_name = @scenarioName, " +
+            "description = @description, scenario_image = @scenarioImage, question = @question, " +
+            "isActive = @isActive WHERE scenario_id = @scenarioId";
         private readonly string sql_CreateScenario = "INSERT INTO scenarios (scenario_name, description, scenario_image, question, isActive) " +
             "VALUES (@scenarioName, @description, @image, @question, @isActive)";
         private readonly string sql_CreateAnswer = "INSERT INTO answers (scenario_id, answer_text, response_text, response_image) " +
@@ -313,7 +315,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         }
 
-        public bool UpdateScenario(int id, bool isActive)
+        public bool UpdateScenario(int id, string name, string description, string image, string question, bool isActive)
         {
             bool isSaved = false;
             int rowAdded = 0;
@@ -324,8 +326,13 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql_UpdateScenario, conn);
-                    cmd.Parameters.AddWithValue("@isActive", isActive);
                     cmd.Parameters.AddWithValue("@scenarioId", id);
+                    cmd.Parameters.AddWithValue("@scenarioName", name);
+                    cmd.Parameters.AddWithValue("@description", description);
+                    cmd.Parameters.AddWithValue("@scenarioImage", image);
+                    cmd.Parameters.AddWithValue("@question", question);
+                    cmd.Parameters.AddWithValue("@isActive", isActive);
+                    
                     
                     rowAdded = cmd.ExecuteNonQuery();
 

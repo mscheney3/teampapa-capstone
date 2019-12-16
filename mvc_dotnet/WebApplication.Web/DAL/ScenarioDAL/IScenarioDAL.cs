@@ -24,7 +24,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         bool SaveReview(int userId, int answerId);
 
-        bool UpdateScenario(int id, bool isActive);
+        bool UpdateScenario(int id, string name, string description, string image, string question, bool isActive);
 
         bool CreateScenario(string scenarioName, string description, string image, string question, int isActive);
 
