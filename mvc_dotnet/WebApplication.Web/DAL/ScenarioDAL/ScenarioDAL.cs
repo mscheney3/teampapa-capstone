@@ -227,6 +227,20 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             return nextScenario;
         }
 
+
+        public Scenario ReplayScenario(int studentId, int scenarioId)
+        {
+            Scenario nextScenario = new Scenario();
+
+            List<Scenario> userScenarios = GetAllUserScenarios(studentId);
+
+  
+           nextScenario = userScenarios[scenarioId - 1];
+                   
+  
+            return nextScenario;
+        }
+
         public List<Review> GetReview(int userId)
         {
             List<Review> reviewScenarios = new List<Review>();
