@@ -90,28 +90,62 @@ namespace WebApplication.Tests.DAL
             Assert.IsTrue(isAdded);
         }
 
-        //[TestMethod]
-        //public void Scenario_GetResponse_Test()
-        //{
-        //    {
-        //    //    //Wait until after optional create scenario is complete
-        //    }
-        //}
+
+        [TestMethod]
+        public void Scenario_CreateScenario_Test()
+        {
+            //Arrange
+            IScenarioDAL dao = new ScenarioDAL(ConnectionString);
+            
+            //Action
+            bool isAdded = dao.CreateScenario("test", "testing", "testImage", "testQuestion", 1);
+            //Assert
+            Assert.IsTrue(isAdded);
+        }
+
+        [TestMethod]
+        public void Scenario_GetResponse_Test()
+        {
+            //Arrange
+            IScenarioDAL dao = new ScenarioDAL(ConnectionString);
+            bool newScene = dao.SaveReview(1, 1);
+
+            //Action
+            Answer newAnswer = dao.GetResponse(1);
+            //Assert
+            Assert.AreEqual("A) Sure", newAnswer.AnswerText);
+
+        }
 
 
-        //[TestMethod]
-        //public void Scenario_GetScenarioAnswers_Test()
-        //{
-        //    {
-        //    //    //Wait until after optional create scenario is complete
-        //    }
-        //}
+        [TestMethod]
+        public void Scenario_GetScenarioAnswers_Test()
+        {
+            
+                //Arrange
+                IScenarioDAL dao = new ScenarioDAL(ConnectionString);
+                List<Answer> answers = dao.GetScenarioAnswers(3);
 
-        //[TestMethod]
-        //public void Scenario_GetUserScenario_Test()
-        //{
-        //    //Wait until after optional create scenario is complete
-        //}
+                //Action
+                Answer testAnswer = answers[0];
+
+                //Assert
+                Assert.AreEqual(testAnswer.AnswerId, 7);
+            
+        }
+
+        [TestMethod]
+        public void Scenario_GetUserScenario_Test()
+        {
+            //Arrange
+            IScenarioDAL dao = new ScenarioDAL(ConnectionString);
+
+            //Action
+            Scenario userScenario = dao.GetUserScenario(1);
+
+            //Assert
+            Assert.AreEqual(userScenario.Id, 1);
+        }
 
         //[TestMethod]
         //public void Scenario_UpdateScenario_Test()

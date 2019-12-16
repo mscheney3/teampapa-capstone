@@ -115,7 +115,7 @@ INSERT INTO answers (scenario_id, answer_text, response_text, response_image, re
 INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (2, 'C) Say "excuse me"', 'Classmates will always listen if you are nice to them', 'https://i.ibb.co/W6w3hm7/hallwaysayexcuseme.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
 INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (3, 'A) Steal ball', 'You should ask for the pass. If you hurt others feelings it is good to apologize.', 'https://i.ibb.co/PZz8Bcc/soccerstealball.png', 'blue', 'https://i.ibb.co/2NzQMKn/sad-emoji.png');
 INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (3, 'B) Do/Say nothing', 'The other team scored and everyone is happy for them.', 'https://i.ibb.co/dP7C4vG/soccernothing.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (3, 'C) Call for ball', 'Nice shot!', 'https://i.ibb.co/rMBxpS7/soccercallforball.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (3, 'C) Call for ball', 'Nice shot!', 'https://i.ibb.co/F09GG04/soccershot.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
  
  INSERT INTO users (username, password, salt, role) VALUES ('admin@admin.com', 'UT3zZWao733yZCgthmNJJxs5NCg=', 'NuE0Y6FonAI=', 'Admin');
  INSERT INTO users (username, password, salt, role) VALUES ('teacher@teacher.com', 'UT3zZWao733yZCgthmNJJxs5NCg=', 'NuE0Y6FonAI=', 'Teacher');

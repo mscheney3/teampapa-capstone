@@ -32,5 +32,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         int GetMaxScenarioId();
 
+        Scenario ReplayScenario(int studentId, int scenarioId);
+
     }
 }

@@ -70,6 +70,20 @@ namespace WebApplication.Web.Controllers
             return RedirectToAction("scenario", new { id = nextScenario.Id });
         }
 
+
+
+        public IActionResult PreviousScenario(int id)
+        {
+            User user = authProvider.GetCurrentUser();
+            Scenario nextScenario = scenarioDAL.ReplayScenario(user.Id, id);
+
+            if (nextScenario.Id == 0)
+            {
+                return RedirectToAction("Review", "Scenario");
+            }
+            return RedirectToAction("scenario", new { id = nextScenario.Id });
+        }
+
         [HttpGet]
         [AuthorizationFilter("Admin", "Teacher")]
         public IActionResult AssignScenario()
