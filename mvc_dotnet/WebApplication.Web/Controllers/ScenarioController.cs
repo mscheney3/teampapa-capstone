@@ -157,6 +157,9 @@ namespace WebApplication.Web.Controllers
         public IActionResult Edit(int id)
         {
             Scenario scenario = scenarioDAL.GetUserScenario(id);
+            List<Answer> answerList = scenarioDAL.GetScenarioAnswers(id);
+
+            TempData["answerList"] = answerList;
             return View(scenario);
         }
 
@@ -165,7 +168,7 @@ namespace WebApplication.Web.Controllers
         {
             bool success = scenarioDAL.UpdateScenario(id, name, description, imageName, question, isActive);
 
-            return RedirectToAction("EditAnswer", "Scenario");
+            return RedirectToAction("UpdateScenarios");
         }
 
         [HttpGet]
