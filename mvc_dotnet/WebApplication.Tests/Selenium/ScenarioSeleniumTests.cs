@@ -26,7 +26,7 @@ namespace WebApplication.Tests.Selenium
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var mainLogo = chromeDriver.FindElement(By.LinkText("Scenario"));
+                var mainLogo = chromeDriver.FindElement(By.LinkText("Scenario Assignments"));
                 mainLogo.Click();
                 var Username = chromeDriver.FindElementById("Email");
                 Username.SendKeys("Admin@Admin.com");
@@ -34,11 +34,11 @@ namespace WebApplication.Tests.Selenium
                 var Password = chromeDriver.FindElementById("Password");
                 Password.SendKeys("Password");
 
-                var LogIn = chromeDriver.FindElementByLinkText("Login");
+                var LogIn = chromeDriver.FindElementById("Login");
                 LogIn.Click(); 
 
 
-                var startAssignment = chromeDriver.FindElementById("start-assignment");
+                var startAssignment = chromeDriver.FindElementByPartialLinkText("Start");
                 startAssignment.Click();
 
                 var Answer = chromeDriver.FindElement(By.LinkText("A) Sure"));
