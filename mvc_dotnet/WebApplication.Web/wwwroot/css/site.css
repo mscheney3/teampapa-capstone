@@ -85,6 +85,10 @@ body {
     border: solid 2px black;
 }
 
+dl {
+    margin-top: -50px;
+}
+
 dd {
     text-align: center;
     justify-content: center;
@@ -244,10 +248,6 @@ li {
 }
 
 @media only screen and (max-width: 600px) {
-    [class*="col-"] {
-        width: 100%;
-    }
-
         .answer {
         padding: 8px;
         margin: 5px 0px 5px 0px;
@@ -260,6 +260,10 @@ li {
 
     dd {
         font-size: 20px;
+    }
+
+    dl {
+        margin-top: -10px;
     }
 
     #response-image {
@@ -289,5 +293,17 @@ li {
 
     .review-header {
         font-size: 20px;
+    }
+
+    .index-text {
+        font-size: 24px;
+    }
+
+    .navigation.index-text {
+        font-size: 20px;
+    }
+
+    .maintitle {
+        font-size: 24px;
     }
 }
