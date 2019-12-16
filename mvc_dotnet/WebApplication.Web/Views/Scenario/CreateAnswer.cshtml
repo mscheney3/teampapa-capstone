@@ -5,7 +5,7 @@
     int maxId = (int)TempData["maxScenario"];
 }
 
-<h2>CreateAnswer</h2>
+<h2>Create Answer</h2>
 
 <hr />
 <div class="row">
@@ -17,17 +17,17 @@
                 <span asp-validation-for="ScenarioId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AnswerText" class="control-label"></label>
+                <label asp-for="AnswerText" class="control-label">Answer Text</label>
                 <input asp-for="AnswerText" class="form-control" />
                 <span asp-validation-for="AnswerText" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ResponseText" class="control-label"></label>
+                <label asp-for="ResponseText" class="control-label">Response Text</label>
                 <input asp-for="ResponseText" class="form-control" />
                 <span asp-validation-for="ResponseText" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ResponseImage" class="control-label"></label>
+                <label asp-for="ResponseImage" class="control-label">Response Image URL</label>
                 <input asp-for="ResponseImage" class="form-control" />
                 <span asp-validation-for="ResponseImage" class="text-danger"></span>
             </div>
