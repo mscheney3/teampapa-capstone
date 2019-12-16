@@ -171,7 +171,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         answer.AnswerText = Convert.ToString(reader["answer_text"]);
                         answer.ResponseImage = Convert.ToString(reader["response_image"]);
                         answer.ResponseText = Convert.ToString(reader["response_text"]);
-                        
+
                         answers.Add(answer);
                     }
                 }
@@ -238,10 +238,10 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
             List<Scenario> userScenarios = GetAllUserScenarios(studentId);
 
-  
-           nextScenario = userScenarios[scenarioId - 1];
-                   
-  
+
+            nextScenario = userScenarios[scenarioId - 1];
+
+
             return nextScenario;
         }
 
@@ -332,8 +332,8 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                     cmd.Parameters.AddWithValue("@scenarioImage", image);
                     cmd.Parameters.AddWithValue("@question", question);
                     cmd.Parameters.AddWithValue("@isActive", isActive);
-                    
-                    
+
+
                     rowAdded = cmd.ExecuteNonQuery();
 
                     if (rowAdded > 0)
@@ -346,9 +346,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 throw ex;
             }
-
             return isSaved;
-
         }
 
         public bool CreateScenario(string name, string description, string imageName, string question, int isActive)

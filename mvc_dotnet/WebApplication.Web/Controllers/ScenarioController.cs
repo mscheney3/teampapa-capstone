@@ -165,7 +165,7 @@ namespace WebApplication.Web.Controllers
         {
             bool success = scenarioDAL.UpdateScenario(id, name, description, imageName, question, isActive);
 
-            return RedirectToAction("UpdateScenarios");
+            return RedirectToAction("EditAnswer", "Scenario");
         }
 
         [HttpGet]
