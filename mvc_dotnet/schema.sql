@@ -65,7 +65,9 @@ answer_id int not null identity (1,1),
 scenario_id int not null,
 answer_text varchar(50) not null,
 response_text varchar(200) not null,
-response_image varchar(50) not null
+response_image varchar(50) not null,
+response_color varchar(50) not null,
+emoji varchar(50) not null
 
 constraint pk_answers primary key (answer_id)
 )
@@ -101,19 +103,19 @@ ADD FOREIGN KEY (scenario_id) REFERENCES scenarios(scenario_id);
  ADD FOREIGN KEY (answer_id) REFERENCES answers(answer_id);
 
 
-INSERT INTO scenarios (scenario_name, description, scenario_image, question, isActive) VALUES ('Classroom', 'Your teacher asks you to read aloud', 'https://i.ibb.co/BHhfmSs/classroomscenario.png', 'Would you like to read?', 1);
+INSERT INTO scenarios (scenario_name, description, scenario_image, question, isActive) VALUES ('Classroom', 'Your teacher asks you to read aloud.', 'https://i.ibb.co/BHhfmSs/classroomscenario.png', 'Would you like to read?', 1);
 INSERT INTO scenarios (scenario_name, description, scenario_image, question, isActive ) VALUES ('Hallway', 'You want to place your books in your locker. However, your neighbor is blocking your locker.', 'https://i.ibb.co/rGXTKzW/hallwayscenario.png', 'Do you:', 1);
 INSERT INTO scenarios (scenario_name, description, scenario_image, question, isActive ) VALUES ('Soccer', 'You need to choose your next move.', 'https://i.ibb.co/PZz8Bcc/soccerstealball.png', 'Do you:', 1);
 
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'A) Sure', 'Good job!', 'https://i.ibb.co/7VzshNp/classroomsure.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'B) No', 'People will support you if you try.', 'https://i.ibb.co/JCpQdMm/classroomno.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (1, 'C) Start reading', 'Your teacher expects you to answer before reading', 'https://i.ibb.co/2Z6r6Xc/classroomstartreading.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (2, 'A) Walk away', 'People will help if you ask', 'https://i.ibb.co/jyq6RTg/hallwaywalkaway.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (2, 'B) Squeeze in front of classmate', 'Next time ask me to move over and I will', 'https://i.ibb.co/FgG63WH/hallwaysqueeze.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (2, 'C) Say "excuse me"', 'Classmates will always listen if you are nice to them', 'https://i.ibb.co/W6w3hm7/hallwaysayexcuseme.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'A) Steal ball', 'You should ask for the pass. If you hurt others feeling it is good to apologize', 'https://i.ibb.co/PZz8Bcc/soccerstealball.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'B) Do/Say nothing', 'The other team scored and everyone is happy for them', 'https://i.ibb.co/dP7C4vG/soccernothing.png');
-INSERT INTO answers (scenario_id, answer_text, response_text, response_image) VALUES (3, 'C) Call for ball', 'Nice shot!', 'https://i.ibb.co/rMBxpS7/soccercallforball.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (1, 'A) Sure', 'Good job!', 'https://i.ibb.co/7VzshNp/classroomsure.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (1, 'B) No', 'People will support you if you try.', 'https://i.ibb.co/JCpQdMm/classroomno.png', 'blue', 'https://i.ibb.co/2NzQMKn/sad-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (1, 'C) Start reading', 'Your teacher expects you to answer before reading.', 'https://i.ibb.co/2Z6r6Xc/classroomstartreading.png', 'red', 'https://i.ibb.co/QFL55zM/angry-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (2, 'A) Walk away', 'People will help if you ask.', 'https://i.ibb.co/jyq6RTg/hallwaywalkaway.png', 'blue', 'https://i.ibb.co/2NzQMKn/sad-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (2, 'B) Squeeze in front of classmate', 'Next time ask me to move over and I will.', 'https://i.ibb.co/FgG63WH/hallwaysqueeze.png', 'red', 'https://i.ibb.co/QFL55zM/angry-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (2, 'C) Say "excuse me"', 'Classmates will always listen if you are nice to them', 'https://i.ibb.co/W6w3hm7/hallwaysayexcuseme.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (3, 'A) Steal ball', 'You should ask for the pass. If you hurt others feelings it is good to apologize.', 'https://i.ibb.co/PZz8Bcc/soccerstealball.png', 'blue', 'https://i.ibb.co/2NzQMKn/sad-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (3, 'B) Do/Say nothing', 'The other team scored and everyone is happy for them.', 'https://i.ibb.co/dP7C4vG/soccernothing.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
+INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) VALUES (3, 'C) Call for ball', 'Nice shot!', 'https://i.ibb.co/rMBxpS7/soccercallforball.png', 'green', 'https://i.ibb.co/4WvL2KP/happy-emoji.png');
  
  INSERT INTO users (username, password, salt, role) VALUES ('admin@admin.com', 'UT3zZWao733yZCgthmNJJxs5NCg=', 'NuE0Y6FonAI=', 'Admin');
  INSERT INTO users (username, password, salt, role) VALUES ('teacher@teacher.com', 'UT3zZWao733yZCgthmNJJxs5NCg=', 'NuE0Y6FonAI=', 'Teacher');

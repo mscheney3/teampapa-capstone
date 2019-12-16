@@ -10,11 +10,14 @@
             <dd>
                 You answered:
             </dd>
-            <dd id="student-answer">
+            <dd id="student-answer" class=response-@Model.Color>
                 @Html.DisplayFor(model => model.AnswerText)
             </dd>
             <br />
             <dd>
+                <img id="emoji" src="@Model.Emoji">
+            </dd>
+            <dd class=response-@Model.Color>
                 @Html.DisplayFor(model => model.ResponseText)
             </dd>
         </dl>

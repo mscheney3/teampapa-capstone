@@ -237,4 +237,20 @@ li.dropdown {
     padding: 1px;
 }
 
+.response-red {
+    color: red;
+}
+
+.response-green {
+    color: green;
+}
+
+.response-blue {
+    color: blue;
+}
+
+#emoji{
+    border-radius: 100%;
+    width: 25%;
+}
 

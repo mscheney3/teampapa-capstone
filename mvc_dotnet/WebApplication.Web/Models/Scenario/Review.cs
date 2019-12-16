@@ -14,5 +14,6 @@ namespace WebApplication.Web.Models.Scenario
         public string Answer { get; set; }
         public string Result { get; set; }
         public DateTime Date { get; set; }
+        
     }
 }
