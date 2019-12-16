@@ -57,6 +57,7 @@ namespace WebApplication.Web
             services.AddTransient<IAssignmentDAL>(m => new AssignmentDAL(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +77,7 @@ namespace WebApplication.Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
+
 
             app.UseMvc(routes =>
             {
