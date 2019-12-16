@@ -10,6 +10,7 @@ using WebApplication.Web.DAL;
 using WebApplication.Web.DAL.AssingmentDAL;
 using WebApplication.Web.DAL.ScenarioDAL;
 using WebApplication.Web.Models.Scenario;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApplication.Web.Controllers
 {    
@@ -56,6 +57,9 @@ namespace WebApplication.Web.Controllers
                 bool validLogin = authProvider.SignIn(loginViewModel.Email, loginViewModel.Password);
                 if (validLogin)
                 {
+                    User currentUser = authProvider.GetCurrentUser();
+                    string currentRole = currentUser.Role;
+                    HttpContext.Session.SetString("Role", currentRole);
                     // Redirect the user where you want them to go after successful login
                     return RedirectToAction("Index", "Scenario");
                 }
