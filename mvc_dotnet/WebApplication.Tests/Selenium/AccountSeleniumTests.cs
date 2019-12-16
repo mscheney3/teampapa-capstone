@@ -33,17 +33,18 @@ namespace WebApplication.Tests.Selenium
                 var url = "https://localhost:44392/Account/AssignStudent";
                 chromeDriver.Navigate().GoToUrl(url);
 
-                var mainLogo = chromeDriver.FindElement(By.Id("home-logo"));
-                mainLogo.Click();
-
-                ////var registerButton = chromeDriver.FindElement(By.LinkText("Register"));
+                var teachers = chromeDriver.FindElement(By.Name("teacher"));
+                teachers.Click();
 
 
-                ////var nav = chromeDriver.FindElement(By.ClassName("navigation"));
+                var student = chromeDriver.FindElement(By.Name("student"));
+                student.Click();
 
+                var teacherId = chromeDriver.FindElement(By.Name("teacherId"));
+                teacherId.Click();
 
-                //var homeDisc = chromeDriver.FindElement(By.Id("home-disc"));
-                //Assert.IsTrue(homeDisc.Text.Contains("What would you like to do?"));
+                var studentId = chromeDriver.FindElement(By.Name("studentId"));
+                studentId.Click();
 
                 chromeDriver.Close();
             }
@@ -60,24 +61,24 @@ namespace WebApplication.Tests.Selenium
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var url = "https://localhost:44392/";
-                chromeDriver.Navigate().GoToUrl(url);
+                var login = "https://localhost:44392/Account/Login";
+                chromeDriver.Navigate().GoToUrl(login);
 
-
+                chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
+                chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("Login")).Click();
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var mainLogo = chromeDriver.FindElement(By.Id("home-logo"));
-                mainLogo.Click();
-
-                //var registerButton = chromeDriver.FindElement(By.LinkText("Register"));
+                var url = "https://localhost:44392/Account/ChangePassword";
+                chromeDriver.Navigate().GoToUrl(url);
 
 
-                //var nav = chromeDriver.FindElement(By.ClassName("navigation"));
+                chromeDriver.FindElement(By.Id("OldPassword")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("NewPassword")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("changePassword"));
 
 
-                var homeDisc = chromeDriver.FindElement(By.Id("home-disc"));
-                Assert.IsTrue(homeDisc.Text.Contains("What would you like to do?"));
 
                 chromeDriver.Close();
             }
@@ -94,24 +95,22 @@ namespace WebApplication.Tests.Selenium
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var url = "https://localhost:44392/";
-                chromeDriver.Navigate().GoToUrl(url);
+                var login = "https://localhost:44392/Account/Login";
+                chromeDriver.Navigate().GoToUrl(login);
 
-
+                chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
+                chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("Login")).Click();
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var mainLogo = chromeDriver.FindElement(By.Id("home-logo"));
-                mainLogo.Click();
-
-                //var registerButton = chromeDriver.FindElement(By.LinkText("Register"));
+                var url = "https://localhost:44392/Account/CreateUser";
+                chromeDriver.Navigate().GoToUrl(url);
 
 
-                //var nav = chromeDriver.FindElement(By.ClassName("navigation"));
-
-
-                var homeDisc = chromeDriver.FindElement(By.Id("home-disc"));
-                Assert.IsTrue(homeDisc.Text.Contains("What would you like to do?"));
+                chromeDriver.FindElement(By.Id("Username")).SendKeys("test@test.com");
+                chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("Role")).SendKeys("Student");
 
                 chromeDriver.Close();
             }
@@ -129,24 +128,22 @@ namespace WebApplication.Tests.Selenium
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var url = "https://localhost:44392/";
-                chromeDriver.Navigate().GoToUrl(url);
+                var login = "https://localhost:44392/Account/Login";
+                chromeDriver.Navigate().GoToUrl(login);
 
-
+                chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
+                chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("Login")).Click();
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var mainLogo = chromeDriver.FindElement(By.Id("home-logo"));
-                mainLogo.Click();
-
-                //var registerButton = chromeDriver.FindElement(By.LinkText("Register"));
+                var url = "https://localhost:44392/Account/ListOfUsers";
+                chromeDriver.Navigate().GoToUrl(url);
 
 
-                //var nav = chromeDriver.FindElement(By.ClassName("navigation"));
-
-
-                var homeDisc = chromeDriver.FindElement(By.Id("home-disc"));
-                Assert.IsTrue(homeDisc.Text.Contains("What would you like to do?"));
+                chromeDriver.FindElement(By.Id("user_Id")).SendKeys("41");
+                chromeDriver.FindElement(By.Id("user_Password")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("user_Role")).SendKeys("Student");
 
                 chromeDriver.Close();
             }
@@ -163,24 +160,12 @@ namespace WebApplication.Tests.Selenium
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var url = "https://localhost:44392/";
-                chromeDriver.Navigate().GoToUrl(url);
+                var login = "https://localhost:44392/Account/Login";
+                chromeDriver.Navigate().GoToUrl(login);
 
-
-
-                var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
-
-                var mainLogo = chromeDriver.FindElement(By.Id("home-logo"));
-                mainLogo.Click();
-
-                //var registerButton = chromeDriver.FindElement(By.LinkText("Register"));
-
-
-                //var nav = chromeDriver.FindElement(By.ClassName("navigation"));
-
-
-                var homeDisc = chromeDriver.FindElement(By.Id("home-disc"));
-                Assert.IsTrue(homeDisc.Text.Contains("What would you like to do?"));
+                chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
+                chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("Login")).Click();
 
                 chromeDriver.Close();
             }
@@ -197,24 +182,15 @@ namespace WebApplication.Tests.Selenium
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var url = "https://localhost:44392/";
-                chromeDriver.Navigate().GoToUrl(url);
 
+                var login = "https://localhost:44392/Account/Register";
+                chromeDriver.Navigate().GoToUrl(login);
 
+                chromeDriver.FindElement(By.Id("Email")).SendKeys("test@test.com");
+                chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("ConfirmPassword")).SendKeys("password");
+                chromeDriver.FindElement(By.Id("Register")).Click();
 
-                var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
-
-                var mainLogo = chromeDriver.FindElement(By.Id("home-logo"));
-                mainLogo.Click();
-
-                //var registerButton = chromeDriver.FindElement(By.LinkText("Register"));
-
-
-                //var nav = chromeDriver.FindElement(By.ClassName("navigation"));
-
-
-                var homeDisc = chromeDriver.FindElement(By.Id("home-disc"));
-                Assert.IsTrue(homeDisc.Text.Contains("What would you like to do?"));
 
                 chromeDriver.Close();
             }
