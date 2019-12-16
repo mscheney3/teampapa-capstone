@@ -194,9 +194,9 @@ namespace WebApplication.Web.Controllers
         }
 
         [AuthorizationFilter("Admin")]
-        public IActionResult CreateAnswer(int scenarioId, string answerText, string responseText, string responseImage)
+        public IActionResult CreateAnswer(int scenarioId, string answerText, string responseText, string responseImage, string color, string emoji)
         {
-            bool success = scenarioDAL.CreateAnswer(scenarioId, answerText, responseText, responseImage);
+            bool success = scenarioDAL.CreateAnswer(scenarioId, answerText, responseText, responseImage, color, emoji);
 
             return RedirectToAction("CreateAnswer");
         }
