@@ -26,7 +26,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
 
         bool UpdateScenario(int id, string name, string description, string image, string question, bool isActive);
 
-        bool UpdateAnswer(int id, string answerText, string responseText, string responseImage, string responseColor, string emoji);
+        //bool UpdateAnswer(int id, string answerText, string responseText, string responseImage, string responseColor, string emoji);
 
         bool CreateScenario(string scenarioName, string description, string image, string question, int isActive);
 
@@ -35,6 +35,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         int GetMaxScenarioId();
 
         Scenario ReplayScenario(int studentId, int scenarioId);
+
 
     }
 }
