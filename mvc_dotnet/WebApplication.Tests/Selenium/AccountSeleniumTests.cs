@@ -198,15 +198,5 @@ namespace WebApplication.Tests.Selenium
         }
 
 
-        //public void Login()
-        //{
-        //    var url = "https://localhost:44392/Account/AssignStudent";
-        //    chromeDriver.Navigate().GoToUrl(url);
-
-        //    chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
-        //    chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
-        //    chromeDriver.FindElement(By.Id("Login")).Click();
-
-        //}
     }
 }
