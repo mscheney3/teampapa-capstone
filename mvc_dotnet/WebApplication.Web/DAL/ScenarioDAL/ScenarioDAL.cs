@@ -28,6 +28,7 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             "VALUES (@scenarioId, @answerText, @responseText, @responseImage, @responseColor, @emoji)";
         private readonly string sql_GetMaxScenarioId = "SELECT * FROM scenarios WHERE scenario_id = (SELECT MAX(scenario_id) FROM scenarios)";
 
+
         public ScenarioDAL(string connectionString)
         {
             this.connectionString = connectionString;
@@ -171,6 +172,9 @@ namespace WebApplication.Web.DAL.ScenarioDAL
                         answer.AnswerText = Convert.ToString(reader["answer_text"]);
                         answer.ResponseImage = Convert.ToString(reader["response_image"]);
                         answer.ResponseText = Convert.ToString(reader["response_text"]);
+                        answer.ScenarioId = Convert.ToInt32(reader["scenario_id"]);
+                        answer.Color = Convert.ToString(reader["response_color"]);
+                        answer.Emoji = Convert.ToString(reader["emoji"]);
 
                         answers.Add(answer);
                     }
