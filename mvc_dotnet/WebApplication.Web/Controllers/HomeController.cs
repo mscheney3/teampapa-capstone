@@ -11,7 +11,7 @@ namespace WebApplication.Web.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
-        {            
+        {
             return View();
         }
 
@@ -33,6 +33,12 @@ namespace WebApplication.Web.Controllers
         {
             return View();
         }
+
+
+        //public IActionResult Error(string message = "")
+        //{
+        //  return View(message);
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

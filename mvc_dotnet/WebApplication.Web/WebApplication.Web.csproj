@@ -5,6 +5,10 @@
     <UseRazorBuildServer>false</UseRazorBuildServer>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="wwwroot\images\Classroom\**" />
     <Compile Remove="wwwroot\images\Hallway\**" />

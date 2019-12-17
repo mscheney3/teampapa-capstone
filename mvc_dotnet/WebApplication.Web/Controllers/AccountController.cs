@@ -50,17 +50,20 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel loginViewModel)
         {
-            // Ensure the fields were filled out
+            //Ensure the fields were filled out
             if (ModelState.IsValid)
             {
-                // Check that they provided correct credentials
+                //Check that they provided correct credentials
                 bool validLogin = authProvider.SignIn(loginViewModel.Email, loginViewModel.Password);
                 if (validLogin)
                 {
-                    User currentUser = authProvider.GetCurrentUser();
-                    string currentRole = currentUser.Role;
-                    HttpContext.Session.SetString("Role", currentRole);
-                    // Redirect the user where you want them to go after successful login
+
+
+                        User currentUser = authProvider.GetCurrentUser();
+                        string currentRole = currentUser.Role;
+                        HttpContext.Session.SetString("Role", currentRole);
+
+                    //Redirect the user where you want them to go after successful login
                     return RedirectToAction("Index", "Scenario");
                 }
             }
