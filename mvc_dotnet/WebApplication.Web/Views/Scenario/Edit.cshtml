@@ -56,7 +56,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit" method="post">
+        <form asp-action="EditAnswer" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @foreach (Answer answer in answerList)
             {
@@ -66,22 +66,22 @@
 
                 <div class="form-group">
                     <label asp-for="@answer.AnswerText">Answer Text</label>
-                    <input asp-for="@answer.AnswerText" class="form-control">
+                    <input asp-for="@answer.AnswerText" name="answerText" class="form-control">
                     <span asp-validation-for="@answer.AnswerText" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@answer.ResponseText">Response Text</label>
-                    <input asp-for="@answer.ResponseText" class="form-control">
+                    <input asp-for="@answer.ResponseText" name="responseText" class="form-control">
                     <span asp-validation-for="@answer.ResponseText" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@answer.ResponseImage">Response Image URL</label>
-                    <input asp-for="@answer.ResponseImage" class="form-control">
+                    <input asp-for="@answer.ResponseImage" name="responseImage" class="form-control">
                     <span asp-validation-for="@answer.ResponseImage" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@answer.Color">Response Color</label>
-                    <select asp-for="@answer.Color" class="form-control">
+                    <select asp-for="@answer.Color" name="responseColor" class="form-control">
                         <option value="green">Green: Happy</option>
                         <option value="red">Red: Angry</option>
                         <option value="blue">Blue: Sad</option>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="@answer.Emoji">Response Emoji URL</label>
-                    <input asp-for="@answer.Emoji" class="form-control">
+                    <input asp-for="@answer.Emoji" name="emoji" class="form-control">
                     <span asp-validation-for="@answer.Emoji" class="text-danger"></span>
                 </div>
 

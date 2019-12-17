@@ -171,6 +171,14 @@ namespace WebApplication.Web.Controllers
             return RedirectToAction("UpdateScenarios");
         }
 
+        [HttpPost]
+        public IActionResult EditAnswer(int id, string answerText, string responseText, string responseImage, string responseColor, string emoji)
+        {
+            bool success = scenarioDAL.UpdateAnswer(id, answerText, responseText, responseImage, responseColor, emoji);
+
+            return RedirectToAction("UpdateScenarios");
+        }
+
         [HttpGet]
         [AuthorizationFilter("Admin")]
         public IActionResult CreateScenario()

@@ -22,6 +22,9 @@ namespace WebApplication.Web.DAL.ScenarioDAL
         private readonly string sql_UpdateScenario = "Update scenarios SET scenario_name = @scenarioName, " +
             "description = @description, scenario_image = @scenarioImage, question = @question, " +
             "isActive = @isActive WHERE scenario_id = @scenarioId";
+        private readonly string sql_UpdateAnswer = "Update answers SET answer_text = @answerText, " +
+            "response_text = @responseText, response_image = @responseImage, response_color = @responseColor, " +
+            "emoji = @emoji WHERE answer_id = @answerId";
         private readonly string sql_CreateScenario = "INSERT INTO scenarios (scenario_name, description, scenario_image, question, isActive) " +
             "VALUES (@scenarioName, @description, @image, @question, @isActive)";
         private readonly string sql_CreateAnswer = "INSERT INTO answers (scenario_id, answer_text, response_text, response_image, response_color, emoji) " +
@@ -350,6 +353,40 @@ namespace WebApplication.Web.DAL.ScenarioDAL
             {
                 throw ex;
             }
+            return isSaved;
+        }
+
+        public bool UpdateAnswer(int answerId, string answerText, string responseText, string responseImage, string responseColor, string emoji)
+        {
+            bool isSaved = false;
+            int rowAdded = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql_UpdateAnswer, conn);
+                    cmd.Parameters.AddWithValue("@answerId", answerId);
+                    cmd.Parameters.AddWithValue("@answerText", answerText);
+                    cmd.Parameters.AddWithValue("@responseText", responseText);
+                    cmd.Parameters.AddWithValue("@responseImage", responseImage);
+                    cmd.Parameters.AddWithValue("@responseColor", responseColor);
+                    cmd.Parameters.AddWithValue("@emoji", emoji);
+
+                    rowAdded = cmd.ExecuteNonQuery();
+
+                    if (rowAdded > 0)
+                    {
+                        isSaved = true;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
             return isSaved;
         }
 
