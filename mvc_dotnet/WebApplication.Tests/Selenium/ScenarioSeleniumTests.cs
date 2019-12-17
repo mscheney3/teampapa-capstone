@@ -26,24 +26,24 @@ namespace WebApplication.Tests.Selenium
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var mainLogo = chromeDriver.FindElement(By.LinkText("Scenario"));
+                var mainLogo = chromeDriver.FindElement(By.LinkText("Scenario Assignments"));
                 mainLogo.Click();
                 var Username = chromeDriver.FindElementById("Email");
                 Username.SendKeys("Admin@Admin.com");
-
                 var Password = chromeDriver.FindElementById("Password");
                 Password.SendKeys("Password");
+                var LogIn = chromeDriver.FindElementById("Login");
+                LogIn.Click();
+                var wait1 = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var LogIn = chromeDriver.FindElementByLinkText("Login");
-                LogIn.Click(); 
-
-
-                var startAssignment = chromeDriver.FindElementById("start-assignment");
+                var startAssignment = chromeDriver.FindElementByLinkText("Start Assignment");
                 startAssignment.Click();
 
+                var wait2 = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
                 var Answer = chromeDriver.FindElement(By.LinkText("A) Sure"));
                 Answer.Click();
 
+                var wait3 = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
                 var NextScene = chromeDriver.FindElement(By.LinkText("Next Scene"));
                 NextScene.Click();
 

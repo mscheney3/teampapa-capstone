@@ -32,11 +32,6 @@ namespace WebApplication.Tests
                 var mainLogo = chromeDriver.FindElement(By.Id("home-logo"));
                 mainLogo.Click();
 
-                //var registerButton = chromeDriver.FindElement(By.LinkText("Register"));
-
-
-                //var nav = chromeDriver.FindElement(By.ClassName("navigation"));
-
 
                 var homeDisc = chromeDriver.FindElement(By.Id("home-disc"));
                 Assert.IsTrue(homeDisc.Text.Contains("What would you like to do?"));

@@ -1,7 +1,10 @@
-﻿@model WebApplication.Web.Models.Scenario.Scenario
+﻿@using WebApplication.Web.Models.Scenario;
+@model WebApplication.Web.Models.Scenario.Scenario
+
 
 @{
     ViewData["Title"] = "Edit";
+    List<Answer> answerList = TempData["answerList"] as List<Answer>;
 }
 
 <h2>Edit Scenario: @Model.Name</h2>
@@ -20,7 +23,7 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageName" class="control-label"></label>
+                <label asp-for="ImageName" class="control-label">Image URL</label>
                 <input asp-for="ImageName" class="form-control" />
                 <span asp-validation-for="ImageName" class="text-danger"></span>
             </div>
@@ -43,9 +46,60 @@
                     </select>
                 </div>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditAnswer" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @foreach (Answer answer in answerList)
+            {
+                <div class="form-group">
+                    <input type="hidden" name="id" value="@answer.AnswerId" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@answer.AnswerText">Answer Text</label>
+                    <input asp-for="@answer.AnswerText" name="answerText" class="form-control">
+                    <span asp-validation-for="@answer.AnswerText" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@answer.ResponseText">Response Text</label>
+                    <input asp-for="@answer.ResponseText" name="responseText" class="form-control">
+                    <span asp-validation-for="@answer.ResponseText" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@answer.ResponseImage">Response Image URL</label>
+                    <input asp-for="@answer.ResponseImage" name="responseImage" class="form-control">
+                    <span asp-validation-for="@answer.ResponseImage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@answer.Color">Response Color</label>
+                    <select asp-for="@answer.Color" name="responseColor" class="form-control">
+                        <option value="green">Green: Happy</option>
+                        <option value="red">Red: Angry</option>
+                        <option value="blue">Blue: Sad</option>
+                    </select>
+                    <span asp-validation-for="@answer.Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@answer.Emoji">Response Emoji URL</label>
+                    <input asp-for="@answer.Emoji" name="emoji" class="form-control">
+                    <span asp-validation-for="@answer.Emoji" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+                <br />
+            }
+
         </form>
     </div>
 </div>

@@ -157,6 +157,9 @@ namespace WebApplication.Web.Controllers
         public IActionResult Edit(int id)
         {
             Scenario scenario = scenarioDAL.GetUserScenario(id);
+            List<Answer> answerList = scenarioDAL.GetScenarioAnswers(id);
+
+            TempData["answerList"] = answerList;
             return View(scenario);
         }
 
@@ -165,7 +168,15 @@ namespace WebApplication.Web.Controllers
         {
             bool success = scenarioDAL.UpdateScenario(id, name, description, imageName, question, isActive);
 
-            return RedirectToAction("EditAnswer", "Scenario");
+            return RedirectToAction("UpdateScenarios");
+        }
+
+        [HttpPost]
+        public IActionResult EditAnswer(int id, string answerText, string responseText, string responseImage, string responseColor, string emoji)
+        {
+            bool success = scenarioDAL.UpdateAnswer(id, answerText, responseText, responseImage, responseColor, emoji);
+
+            return RedirectToAction("UpdateScenarios");
         }
 
         [HttpGet]
