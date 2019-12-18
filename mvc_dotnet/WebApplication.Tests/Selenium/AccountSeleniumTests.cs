@@ -17,11 +17,11 @@ namespace WebApplication.Tests.Selenium
             var browserDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArguments("--start-maximized", "--ignore-certificate-errors");
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var login = "https://localhost:44392/Account/Login";
+                var login = "http://sociemoti.fun/Account/Login";
                 chromeDriver.Navigate().GoToUrl(login);
 
                 chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
@@ -30,7 +30,7 @@ namespace WebApplication.Tests.Selenium
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var url = "https://localhost:44392/Account/AssignStudent";
+                var url = "https://sociemoti.fun/Account/AssignStudent";
                 chromeDriver.Navigate().GoToUrl(url);
 
                 var teachers = chromeDriver.FindElement(By.Name("teacher"));
@@ -57,11 +57,11 @@ namespace WebApplication.Tests.Selenium
             var browserDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArguments("--start-maximized", "--ignore-certificate-errors");
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var login = "https://localhost:44392/Account/Login";
+                var login = "https://sociemoti.fun/Account/Login";
                 chromeDriver.Navigate().GoToUrl(login);
 
                 chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
@@ -70,7 +70,7 @@ namespace WebApplication.Tests.Selenium
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var url = "https://localhost:44392/Account/ChangePassword";
+                var url = "https://sociemoti.fun/Account/ChangePassword";
                 chromeDriver.Navigate().GoToUrl(url);
 
 
@@ -91,11 +91,11 @@ namespace WebApplication.Tests.Selenium
             var browserDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArguments("--start-maximized", "--ignore-certificate-errors");
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var login = "https://localhost:44392/Account/Login";
+                var login = "https://sociemoti.fun/Account/Login";
                 chromeDriver.Navigate().GoToUrl(login);
 
                 chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
@@ -104,7 +104,7 @@ namespace WebApplication.Tests.Selenium
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var url = "https://localhost:44392/Account/CreateUser";
+                var url = "https://sociemoti.fun/Account/CreateUser";
                 chromeDriver.Navigate().GoToUrl(url);
 
 
@@ -124,20 +124,20 @@ namespace WebApplication.Tests.Selenium
             var browserDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArguments("--start-maximized", "--ignore-certificate-errors");
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var login = "https://localhost:44392/Account/Login";
+                var login = "https://sociemoti.fun/Account/Login";
                 chromeDriver.Navigate().GoToUrl(login);
 
-                chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
+                chromeDriver.FindElement(By.Id("Email")).SendKeys("test@test.com");
                 chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
                 chromeDriver.FindElement(By.Id("Login")).Click();
 
                 var wait = new WebDriverWait(chromeDriver, new TimeSpan(0, 0, 1, 0));
 
-                var url = "https://localhost:44392/Account/ListOfUsers";
+                var url = "https://sociemoti.fun/Account/ListOfUsers";
                 chromeDriver.Navigate().GoToUrl(url);
 
 
@@ -156,14 +156,14 @@ namespace WebApplication.Tests.Selenium
             var browserDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArguments("--start-maximized", "--ignore-certificate-errors");
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var login = "https://localhost:44392/Account/Login";
+                var login = "https://sociemoti.fun/Account/Login";
                 chromeDriver.Navigate().GoToUrl(login);
 
-                chromeDriver.FindElement(By.Id("Email")).SendKeys("admin@admin.com");
+                chromeDriver.FindElement(By.Id("Email")).SendKeys("test@test.com");
                 chromeDriver.FindElement(By.Id("Password")).SendKeys("password");
                 chromeDriver.FindElement(By.Id("Login")).Click();
 
@@ -178,12 +178,12 @@ namespace WebApplication.Tests.Selenium
             var browserDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArguments("--start-maximized", "--ignore-certificate-errors");
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
 
-                var login = "https://localhost:44392/Account/Register";
+                var login = "https://sociemoti.fun/Account/Register";
                 chromeDriver.Navigate().GoToUrl(login);
 
                 chromeDriver.FindElement(By.Id("Email")).SendKeys("test@test.com");

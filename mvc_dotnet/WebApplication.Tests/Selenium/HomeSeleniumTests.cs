@@ -18,11 +18,11 @@ namespace WebApplication.Tests
             var browserDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
+            options.AddArguments("--start-maximized", "--ignore-certificate-errors");
 
             using (var chromeDriver = new ChromeDriver(browserDriverPath, options))
             {
-                var url = "https://localhost:44392/";
+                var url = "https://sociemoti.fun/";
                 chromeDriver.Navigate().GoToUrl(url);
 
 
